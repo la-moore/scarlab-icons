@@ -1,0 +1,15 @@
+{
+	"name": "@scarlab/icons-vue",
+	"version": "1.0.0",
+	"license": "MIT",
+	"homepage": "https://github.com/la-moore/scarlab-icons",
+	"publishConfig": {
+		"access": "public"
+	},
+	"files": [
+		"index.ts",
+		"index.js",
+		"outline",
+		"solid"
+	]
+}

@@ -1,0 +1,15 @@
+{
+	"name": "@scarlab/icons",
+	"version": "1.0.0",
+	"license": "MIT",
+	"homepage": "https://github.com/la-moore/scarlab-icons",
+	"publishConfig": {
+		"access": "public"
+	},
+	"files": [
+		"index.js",
+		"index.min.js",
+		"sprite-outline.svg",
+		"sprite-solid.svg"
+	]
+}
