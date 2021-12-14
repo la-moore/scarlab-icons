@@ -1,6 +1,7 @@
 const json = require('@rollup/plugin-json')
 const { nodeResolve } = require('@rollup/plugin-node-resolve')
 const minify = require('rollup-plugin-babel-minify')
+const copy = require('rollup-plugin-copy')
 
 export default [
     {
@@ -13,6 +14,9 @@ export default [
         plugins: [
             json(),
             nodeResolve(),
+            copy({
+                targets: [{ src: 'dist/*', dest: 'lib' }]
+            }),
         ]
     },
     {

@@ -43,7 +43,10 @@ export default function useSprite(icons) {
             "index.js",
             "index.min.js",
             "sprite-outline.svg",
-            "sprite-solid.svg"
+            "sprite-solid.svg",
+            "attributes.json",
+            "icons.json",
+            "tags.json"
         ],
     })
 }

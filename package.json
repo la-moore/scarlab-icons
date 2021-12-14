@@ -1,6 +1,6 @@
 {
   "name": "@la-moore/scarlab-icons",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "files": [
     "README.md",
@@ -23,7 +23,9 @@
     "publish-vue": "npm publish ./vue",
     "publish-react": "npm publish ./react"
   },
-  "dependencies": {},
+  "dependencies": {
+    "rollup-plugin-copy": "^3.4.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.16.0",
     "@babel/node": "^7.16.0",
