@@ -14,8 +14,8 @@ export default function render(_ctx, _cache) {
 	"class": "scarlab scarlab-arrow-up-left-circle",
     ..._ctx
   }, [
-    _createElementVNode("path", {"d":"M18.364 18.364C14.8492 21.8787 9.15076 21.8787 5.63604 18.364C2.12132 14.8492 2.12132 9.15076 5.63604 5.63604C9.15076 2.12132 14.8492 2.12132 18.364 5.63604C21.8787 9.15076 21.8787 14.8492 18.364 18.364Z"}), 
-	_createElementVNode("path", {"d":"M9.17152 9.17151L14.8284 14.8284"}), 
-	_createElementVNode("path", {"d":"M13.4143 9.17163L9.17167 9.17163L9.17167 13.4143"})
+    _createElementVNode("path", {"d":"M12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21Z"}), 
+	_createElementVNode("path", {"d":"M9.5 9.5L15 15"}), 
+	_createElementVNode("path", {"d":"M14 9H9.32833C9.147 9 9 9.14703 9 9.32837V14"})
   ]))
 }

@@ -14,7 +14,7 @@ export default function render(_ctx, _cache) {
 	"class": "scarlab scarlab-corner-up-left",
     ..._ctx
   }, [
-    _createElementVNode("path", {"d":"M15.976 16.976C15.976 12.0548 14.9212 11 10 11H8.5"}), 
-	_createElementVNode("path", {"d":"M11 8L8 11L11 14"})
+    _createElementVNode("path", {"d":"M15.5 17L15.5 14.5C15.5 12.6144 15.5 11.6716 14.9142 11.0858C14.3284 10.5 13.3856 10.5 11.5 10.5L8 10.5"}), 
+	_createElementVNode("path", {"d":"M10.5 7L7.5 10V10C7.22386 10.2761 7.22386 10.7239 7.5 11V11L10.5 14"})
   ]))
 }

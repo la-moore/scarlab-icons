@@ -4,7 +4,7 @@ function SvgComponent(props) {
   return <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="scarlab scarlab-align-arrow-left" {...props}>
     <path d="M21 21L21 3" />
 	<path d="M8 12L17 12" />
-	<path d="M11 9L8 12L11 15" />
+	<path d="M11 9L9.41421 10.5858C8.63317 11.3668 8.63316 12.6332 9.41421 13.4142L11 15" />
   </svg>
 }
 

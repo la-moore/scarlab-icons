@@ -15,6 +15,6 @@ export default function render(_ctx, _cache) {
     ..._ctx
   }, [
     _createElementVNode("path", {"d":"M16 12L8 12"}), 
-	_createElementVNode("path", {"d":"M13 15L15.913 12.087L16 12L15.913 11.913L13 9"})
+	_createElementVNode("path", {"d":"M13 15L15.913 12.087V12.087C15.961 12.039 15.961 11.961 15.913 11.913V11.913L13 9"})
   ]))
 }

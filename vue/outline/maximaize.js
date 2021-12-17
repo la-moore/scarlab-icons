@@ -14,7 +14,7 @@ export default function render(_ctx, _cache) {
 	"class": "scarlab scarlab-maximaize",
     ..._ctx
   }, [
-    _createElementVNode("path", {"d":"M8 12L8 16L12 16"}), 
-	_createElementVNode("path", {"d":"M16 12L16.0001 8L12 8"})
+    _createElementVNode("path", {"d":"M8 12L8 15.5V15.5C8 15.7761 8.22386 16 8.5 16V16L12 16"}), 
+	_createElementVNode("path", {"d":"M16 12V8.5V8.5C16.0001 8.22388 15.7761 8 15.5 8V8L12 8"})
   ]))
 }

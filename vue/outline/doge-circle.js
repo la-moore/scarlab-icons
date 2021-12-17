@@ -14,7 +14,7 @@ export default function render(_ctx, _cache) {
 	"class": "scarlab scarlab-doge-circle",
     ..._ctx
   }, [
-    _createElementVNode("path", {"d":"M12.5 16C17.75 16 17.75 8 12.5 8H9V16H12.5Z"}), 
+    _createElementVNode("path", {"d":"M12.5 16C17.75 16 17.75 8 12.5 8H11C9.89543 8 9 8.89543 9 10V14C9 15.1046 9.89543 16 11 16H12.5Z"}), 
 	_createElementVNode("path", {"d":"M7 12H11"}), 
 	_createElementVNode("path", {"d":"M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"})
   ]))

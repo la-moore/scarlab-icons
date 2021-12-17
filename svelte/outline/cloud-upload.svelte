@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="scarlab scarlab-cloud-upload" {...$$props}>
     <path d="M6.27126 16C4.31103 14.7751 3 12.5463 3 10C3 6.13401 6.02208 3 9.75 3C13.1779 3 16.009 5.64982 16.4425 9.08201C16.4575 9.20119 16.5708 9.28382 16.6895 9.26537C16.8724 9.23695 17.0595 9.22222 17.25 9.22222C19.3211 9.22222 21 10.9633 21 13.1111C21 14.2576 20.5216 15.2882 19.7605 16" />
-	<path d="M13 13L13 21" />
-	<path d="M16 16L13 13L10 16" />
+	<path d="M13 13.5V21" />
+	<path d="M16 16L13.5 13.5V13.5C13.2239 13.2239 12.7761 13.2239 12.5 13.5V13.5L10 16" />
 </svg>
 }
 

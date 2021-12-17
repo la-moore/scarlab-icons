@@ -14,8 +14,8 @@ export default function render(_ctx, _cache) {
 	"class": "scarlab scarlab-maximaize-circle",
     ..._ctx
   }, [
-    _createElementVNode("path", {"d":"M8 12L8 16L12 16"}), 
-	_createElementVNode("path", {"d":"M16 12L16.0001 8L12 8"}), 
+    _createElementVNode("path", {"d":"M8 12V13L8 15.5V15.5C8 15.7761 8.22386 16 8.5 16V16L11 16L12 16"}), 
+	_createElementVNode("path", {"d":"M16 12L16 11L16.0001 8.5V8.5C16.0001 8.22386 15.7761 8 15.5 8V8L13 8L12 8"}), 
 	_createElementVNode("path", {"d":"M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"})
   ]))
 }

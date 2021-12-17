@@ -504,6 +504,13 @@
 		"bubble",
 		"social"
 	],
+	"check-alt": [
+		"check",
+		"true",
+		"done",
+		"success",
+		"checked"
+	],
 	"check-badge": [
 		"check",
 		"true",
@@ -813,6 +820,11 @@
 		"placement",
 		"layout"
 	],
+	"database": [
+		"server",
+		"storage",
+		"computer"
+	],
 	"desktop": [
 		"screen",
 		"device",
@@ -949,6 +961,22 @@
 		"clone",
 		"duplicate"
 	],
+	"emoji-happy-square": [
+		"face",
+		"emotion"
+	],
+	"emoji-happy": [
+		"face",
+		"emotion"
+	],
+	"emoji-sad-square": [
+		"face",
+		"emotion"
+	],
+	"emoji-sad": [
+		"face",
+		"emotion"
+	],
 	"equal-alt": [
 		"equal",
 		"same",
@@ -993,6 +1021,11 @@
 		"coin",
 		"cash",
 		"currency"
+	],
+	"external-link": [
+		"web",
+		"link",
+		"connect"
 	],
 	"eye-off": [
 		"view",
@@ -1118,10 +1151,12 @@
 	"hand": [],
 	"heart-off": [
 		"heart",
+		"favorite",
 		"dislike"
 	],
 	"heart": [
 		"heart",
+		"favorite",
 		"like",
 		"love"
 	],
@@ -1195,6 +1230,7 @@
 	],
 	"link": [
 		"web",
+		"link",
 		"connect",
 		"join"
 	],
@@ -1684,6 +1720,9 @@
 		"cash",
 		"currency"
 	],
+	"scarlab": [
+		"logo"
+	],
 	"scissors": [
 		"cut"
 	],
@@ -1732,9 +1771,43 @@
 		"ban",
 		"no"
 	],
+	"sparkles": [
+		"shine",
+		"clean",
+		"bling",
+		"star"
+	],
 	"square": [
 		"shape",
 		"stop"
+	],
+	"star-circle": [
+		"interface",
+		"ui",
+		"star",
+		"rate",
+		"favorite"
+	],
+	"star-off": [
+		"interface",
+		"ui",
+		"star",
+		"rate",
+		"favorite"
+	],
+	"star-square": [
+		"interface",
+		"ui",
+		"star",
+		"rate",
+		"favorite"
+	],
+	"star": [
+		"interface",
+		"ui",
+		"star",
+		"rate",
+		"favorite"
 	],
 	"sun": [
 		"sky",
@@ -1754,11 +1827,15 @@
 		"prompt",
 		"programming"
 	],
+	"ticket": [
+		"pass",
+		"show"
+	],
 	"user-add": [
 		"account",
 		"profile",
 		"person",
-		"create",
+		"plus",
 		"new"
 	],
 	"user-check": [
