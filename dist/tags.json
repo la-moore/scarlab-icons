@@ -16,6 +16,11 @@
 		"activity",
 		"signal"
 	],
+	"ad": [
+		"advertising",
+		"marketing",
+		"banner"
+	],
 	"adjustments": [
 		"adjust",
 		"balance",
@@ -39,6 +44,12 @@
 		"mirroring",
 		"screen",
 		"monitor"
+	],
+	"alarm": [
+		"time",
+		"clock",
+		"watch",
+		"alarm"
 	],
 	"alert-alt": [
 		"interface",
@@ -118,6 +129,10 @@
 	"align-vertical-center": [
 		"alignment"
 	],
+	"anchor": [
+		"sea",
+		"ship"
+	],
 	"annotation": [
 		"interface",
 		"ui",
@@ -125,6 +140,11 @@
 		"writing",
 		"note",
 		"alert"
+	],
+	"aperture": [
+		"camera",
+		"photography",
+		"lens"
 	],
 	"apps": [
 		"interface",
@@ -199,6 +219,16 @@
 		"arrow",
 		"return"
 	],
+	"arrow-ramp-left": [
+		"arrow",
+		"ramp",
+		"turn"
+	],
+	"arrow-ramp-right": [
+		"arrow",
+		"ramp",
+		"turn"
+	],
 	"arrow-right-alt": [
 		"next",
 		"skip",
@@ -263,6 +293,9 @@
 		"sign",
 		"mail",
 		"email"
+	],
+	"atom": [
+		"unit"
 	],
 	"award": [
 		"sport",
@@ -342,10 +375,22 @@
 		"tools",
 		"tool"
 	],
+	"bell-off": [
+		"alarm"
+	],
+	"bell-ringing": [
+		"alarm"
+	],
 	"bell": [
 		"notification",
 		"ringing",
 		"alarm"
+	],
+	"beneficiaries": [
+		"user",
+		"person",
+		"company",
+		"partner"
 	],
 	"bitcoin-circle": [
 		"sign",
@@ -367,6 +412,26 @@
 		"coin",
 		"cash",
 		"currency"
+	],
+	"blockquote": [
+		"sign",
+		"quote"
+	],
+	"bluetooth": [
+		"mobile",
+		"wireless"
+	],
+	"blur": [
+		"interface",
+		"ui",
+		"editor"
+	],
+	"bold": [
+		"interface",
+		"editor",
+		"text",
+		"format",
+		"ui"
 	],
 	"book-open": [
 		"study",
@@ -399,6 +464,21 @@
 		"delivery",
 		"package"
 	],
+	"brackets-curly": [
+		"sign",
+		"brackets",
+		"group"
+	],
+	"brackets-square": [
+		"sign",
+		"brackets",
+		"group"
+	],
+	"brackets": [
+		"sign",
+		"brackets",
+		"group"
+	],
 	"briefcase-alt": [
 		"briefcase",
 		"bag",
@@ -413,6 +493,15 @@
 		"travel",
 		"portfolio"
 	],
+	"brightness": [
+		"interface",
+		"ui"
+	],
+	"browser": [
+		"interface",
+		"ui",
+		"layout"
+	],
 	"cake": [
 		"dessert",
 		"bakery",
@@ -423,7 +512,8 @@
 	],
 	"calculator": [
 		"math",
-		"device"
+		"device",
+		"electronics"
 	],
 	"calendar-alt": [
 		"calendar",
@@ -484,6 +574,13 @@
 		"graph"
 	],
 	"chart-bar": [
+		"chart",
+		"statistics",
+		"business",
+		"diagram",
+		"graph"
+	],
+	"chart-bubble": [
 		"chart",
 		"statistics",
 		"business",
@@ -665,6 +762,12 @@
 		"weather",
 		"shower"
 	],
+	"cloud-fog": [
+		"sky",
+		"cloud",
+		"weather",
+		"shower"
+	],
 	"cloud-lightning": [
 		"sky",
 		"cloud",
@@ -752,6 +855,27 @@
 		"bollards",
 		"traffic"
 	],
+	"contacts-alt": [
+		"book",
+		"person",
+		"contact",
+		"phone",
+		"business",
+		"note"
+	],
+	"contacts": [
+		"book",
+		"person",
+		"contact",
+		"phone",
+		"business",
+		"note"
+	],
+	"contrast": [
+		"interface",
+		"ui",
+		"editor"
+	],
 	"corner-down-left": [
 		"corner"
 	],
@@ -805,6 +929,24 @@
 		"cursor",
 		"arrow"
 	],
+	"cursor-click": [
+		"interface",
+		"ui",
+		"computer",
+		"point",
+		"mouse",
+		"cursor",
+		"arrow"
+	],
+	"cursor-text": [
+		"interface",
+		"ui",
+		"computer",
+		"text",
+		"point",
+		"mouse",
+		"cursor"
+	],
 	"cursor": [
 		"interface",
 		"ui",
@@ -832,6 +974,17 @@
 		"monitor",
 		"laptop",
 		"electronics"
+	],
+	"diamond": [
+		"jewelry"
+	],
+	"disk": [
+		"cd",
+		"dvd",
+		"media",
+		"player",
+		"storage",
+		"compact"
 	],
 	"divide-circle": [
 		"sign",
@@ -905,6 +1058,13 @@
 		"erase",
 		"document"
 	],
+	"document-zip": [
+		"7z",
+		"rar",
+		"file",
+		"archive",
+		"document"
+	],
 	"document": [
 		"file",
 		"document"
@@ -954,12 +1114,22 @@
 	"download": [
 		"load"
 	],
+	"droplet": [
+		"liquid",
+		"water"
+	],
 	"duplicate": [
 		"interface",
 		"ui",
 		"copy",
 		"clone",
 		"duplicate"
+	],
+	"edit": [
+		"draw",
+		"design",
+		"pen",
+		"pencil"
 	],
 	"emoji-happy-square": [
 		"face",
@@ -1037,6 +1207,18 @@
 		"view",
 		"watch"
 	],
+	"face-id-error": [
+		"password",
+		"security",
+		"scanner",
+		"face"
+	],
+	"face-id": [
+		"password",
+		"security",
+		"scanner",
+		"face"
+	],
 	"fast-forward": [
 		"control"
 	],
@@ -1049,6 +1231,16 @@
 		"interface",
 		"ui",
 		"spam"
+	],
+	"fingerprint": [
+		"security",
+		"password",
+		"scanner"
+	],
+	"floppy": [
+		"storage",
+		"disk",
+		"save"
 	],
 	"folder-add": [
 		"file",
@@ -1098,6 +1290,46 @@
 		"file",
 		"storage"
 	],
+	"formatting-clear": [
+		"editor",
+		"text",
+		"format"
+	],
+	"formatting": [
+		"editor",
+		"text",
+		"format"
+	],
+	"frame": [
+		"editor",
+		"camera",
+		"photo",
+		"photography",
+		"container",
+		"group"
+	],
+	"gamepad": [
+		"play",
+		"game",
+		"input",
+		"control",
+		"joystick",
+		"gaming",
+		"controller"
+	],
+	"gauge": [
+		"meter",
+		"dashboard",
+		"pressure"
+	],
+	"ghost": [
+		"fear",
+		"scary",
+		"horror",
+		"spooky",
+		"halloween",
+		"boo"
+	],
 	"git-branch": [
 		"code"
 	],
@@ -1142,6 +1374,11 @@
 		"world",
 		"web"
 	],
+	"goblet": [
+		"wine",
+		"cup",
+		"restaurant"
+	],
 	"grid": [
 		"interface",
 		"ui",
@@ -1149,6 +1386,19 @@
 		"layout"
 	],
 	"hand": [],
+	"hash-alt": [
+		"tag",
+		"social"
+	],
+	"hash": [
+		"tag",
+		"social"
+	],
+	"heading": [
+		"editor",
+		"text",
+		"format"
+	],
 	"heart-off": [
 		"heart",
 		"favorite",
@@ -1159,6 +1409,27 @@
 		"favorite",
 		"like",
 		"love"
+	],
+	"help-alt": [
+		"interface",
+		"ui",
+		"sign",
+		"question",
+		"info"
+	],
+	"help-circle": [
+		"interface",
+		"ui",
+		"sign",
+		"question",
+		"info"
+	],
+	"help": [
+		"interface",
+		"ui",
+		"sign",
+		"question",
+		"info"
 	],
 	"home-alt": [
 		"interface",
@@ -1192,6 +1463,45 @@
 		"coin",
 		"cash",
 		"currency"
+	],
+	"id": [
+		"pass",
+		"identity",
+		"person",
+		"security"
+	],
+	"identification": [
+		"pass",
+		"identity",
+		"person",
+		"security"
+	],
+	"inbox-full": [
+		"mail",
+		"email",
+		"business"
+	],
+	"inbox-in": [
+		"mail",
+		"email",
+		"business"
+	],
+	"inbox-out": [
+		"mail",
+		"email",
+		"send",
+		"business"
+	],
+	"inbox": [
+		"mail",
+		"email",
+		"storage",
+		"business"
+	],
+	"italic": [
+		"editor",
+		"text",
+		"format"
 	],
 	"justify-center": [
 		"alignment",
@@ -1227,6 +1537,22 @@
 		"access",
 		"security",
 		"door"
+	],
+	"keyboard": [
+		"key",
+		"input",
+		"computer",
+		"desktop"
+	],
+	"laptop": [
+		"device",
+		"electronics",
+		"computer"
+	],
+	"leaf": [
+		"eco",
+		"nature",
+		"plant"
 	],
 	"link": [
 		"web",
@@ -1276,10 +1602,59 @@
 		"cash",
 		"currency"
 	],
+	"location": [
+		"geo",
+		"map",
+		"navigation",
+		"marker"
+	],
+	"lock-open": [
+		"open",
+		"security",
+		"password"
+	],
+	"lock": [
+		"closed",
+		"security",
+		"password"
+	],
+	"login": [
+		"interface",
+		"ui",
+		"enter",
+		"entry",
+		"signin",
+		"arrow"
+	],
+	"logout": [
+		"interface",
+		"ui",
+		"exit",
+		"arrow"
+	],
 	"mail": [
 		"email",
 		"message",
 		"envelope"
+	],
+	"map": [
+		"geo",
+		"map",
+		"navigation"
+	],
+	"mask": [
+		"editor",
+		"container",
+		"group"
+	],
+	"mastercard": [
+		"commerce",
+		"purchase",
+		"payment",
+		"debit",
+		"card",
+		"pay",
+		"cc"
 	],
 	"maximaize-circle": [
 		"fullscreen",
@@ -1436,12 +1811,24 @@
 		"placement",
 		"layout"
 	],
+	"mug": [
+		"tea",
+		"restaurant",
+		"coffee",
+		"cup"
+	],
+	"overline": [
+		"editor",
+		"text",
+		"format"
+	],
 	"paperclip": [
 		"clip",
 		"office",
 		"attach",
 		"attachment"
 	],
+	"parentheses": [],
 	"pause-alt": [
 		"interface",
 		"ui",
@@ -1486,6 +1873,21 @@
 		"stop",
 		"control"
 	],
+	"paypal": [
+		"brand"
+	],
+	"pencil-alt": [
+		"edit",
+		"draw",
+		"design",
+		"pen"
+	],
+	"pencil": [
+		"edit",
+		"draw",
+		"design",
+		"pen"
+	],
 	"percent-circle": [
 		"sign",
 		"math"
@@ -1527,7 +1929,24 @@
 		"picture",
 		"image"
 	],
-	"play-alt": [],
+	"pin": [
+		"geo",
+		"map",
+		"navigation",
+		"marker"
+	],
+	"play-alt": [
+		"interface",
+		"ui",
+		"sign",
+		"music",
+		"media",
+		"video",
+		"audio",
+		"start",
+		"game",
+		"control"
+	],
 	"play-circle": [
 		"interface",
 		"ui",
@@ -1537,6 +1956,7 @@
 		"video",
 		"audio",
 		"start",
+		"game",
 		"control"
 	],
 	"play-square": [
@@ -1548,6 +1968,7 @@
 		"video",
 		"audio",
 		"start",
+		"game",
 		"control"
 	],
 	"play": [
@@ -1559,6 +1980,7 @@
 		"video",
 		"audio",
 		"start",
+		"game",
 		"control"
 	],
 	"plus-alt": [],
@@ -1640,12 +2062,17 @@
 		"print",
 		"paper",
 		"device",
-		"scanner"
+		"scanner",
+		"electronics"
 	],
 	"qrcode": [
 		"scanner",
 		"commerce",
 		"code"
+	],
+	"quote": [
+		"sign",
+		"quote"
 	],
 	"refresh": [
 		"interface",
@@ -1767,6 +2194,18 @@
 		"network",
 		"connections"
 	],
+	"shopping-bag": [
+		"cart",
+		"market",
+		"shop",
+		"store"
+	],
+	"shopping-cart": [
+		"cart",
+		"market",
+		"shop",
+		"store"
+	],
 	"slash": [
 		"ban",
 		"no"
@@ -1776,6 +2215,14 @@
 		"clean",
 		"bling",
 		"star"
+	],
+	"speaker": [
+		"sound",
+		"audio",
+		"media",
+		"music",
+		"device",
+		"electronics"
 	],
 	"square": [
 		"shape",
@@ -1817,6 +2264,20 @@
 	"support": [
 		"sea"
 	],
+	"switch-horizontal": [
+		"swap",
+		"sort",
+		"arrow",
+		"replace",
+		"reverse"
+	],
+	"switch-vertical": [
+		"swap",
+		"sort",
+		"arrow",
+		"replace",
+		"reverse"
+	],
 	"tablet": [
 		"device",
 		"electronics"
@@ -1830,6 +2291,21 @@
 	"ticket": [
 		"pass",
 		"show"
+	],
+	"timer": [
+		"time",
+		"clock",
+		"watch",
+		"alarm"
+	],
+	"underline": [
+		"editor",
+		"text",
+		"format"
+	],
+	"upload": [
+		"upload",
+		"send"
 	],
 	"user-add": [
 		"account",

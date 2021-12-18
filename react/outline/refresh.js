@@ -2,8 +2,8 @@ import * as React from "react"
 
 function SvgComponent(props) {
   return <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="scarlab scarlab-refresh" {...props}>
-    <path d="M11 4L9.66751 6.66489L9.59591 6.80807C9.53994 6.92002 9.56977 7.05585 9.66751 7.13404V7.13404L12 9" />
-	<path d="M6 13.61C6.3377 15.2224 7.33412 16.6896 8.87305 17.5781C11.7428 19.235 15.4123 18.2518 17.0692 15.382C18.7261 12.5122 17.7428 8.8427 14.8731 7.18584C13.3341 6.29734 11.5652 6.16806 10 6.68179" />
+    <path d="M21 3L15.6 3C15.2686 3 15 3.26863 15 3.6V3.6L15 9" />
+	<path d="M15.5 3.5C18.7983 4.80851 21 8.29825 21 12C21 16.8715 16.9706 21 12 21C7.02944 21 3 16.8715 3 12C3 8.73514 4.80989 5.52512 7.5 4" />
   </svg>
 }
 

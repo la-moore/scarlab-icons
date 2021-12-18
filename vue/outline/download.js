@@ -14,8 +14,8 @@ export default function render(_ctx, _cache) {
 	"class": "scarlab scarlab-download",
     ..._ctx
   }, [
-    _createElementVNode("path", {"d":"M21 14C20.0427 17.0763 17.58 18 12 18C6.41998 18 3.95728 17.1433 3 14.067"}), 
-	_createElementVNode("path", {"d":"M12 13.5L12 6"}), 
-	_createElementVNode("path", {"d":"M9 11L11.5 13.5V13.5C11.7761 13.7761 12.2239 13.7761 12.5 13.5V13.5L15 11"})
+    _createElementVNode("path", {"d":"M12 16L12 8"}), 
+	_createElementVNode("path", {"d":"M9 13L11.913 15.913V15.913C11.961 15.961 12.039 15.961 12.087 15.913V15.913L15 13"}), 
+	_createElementVNode("path", {"d":"M3 15L3 16L3 19C3 20.1046 3.89543 21 5 21L19 21C20.1046 21 21 20.1046 21 19L21 16L21 15"})
   ]))
 }
