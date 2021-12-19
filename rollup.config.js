@@ -15,7 +15,10 @@ export default [
             json(),
             nodeResolve(),
             copy({
-                targets: [{ src: 'dist/*', dest: 'lib' }]
+                targets: [
+                    { src: 'dist/*', dest: 'lib' },
+                    { src: 'README.md', dest: 'lib' },
+                ]
             }),
         ]
     },

@@ -54,6 +54,9 @@ export class Transformer {
             publishConfig: {
                 access: "public"
             },
+            files: [
+                '**/*'
+            ],
             ...opt
         }
 

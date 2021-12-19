@@ -547,12 +547,6 @@
 		"digital",
 		"picture"
 	],
-	"mug": [
-		"tea",
-		"restaurant",
-		"coffee",
-		"cup"
-	],
 	"cash": [
 		"money",
 		"business",
@@ -1817,6 +1811,12 @@
 		"placement",
 		"layout"
 	],
+	"mug": [
+		"tea",
+		"restaurant",
+		"coffee",
+		"cup"
+	],
 	"overline": [
 		"editor",
 		"text",
@@ -1828,6 +1828,7 @@
 		"attach",
 		"attachment"
 	],
+	"parentheses": [],
 	"pause-alt": [
 		"interface",
 		"ui",

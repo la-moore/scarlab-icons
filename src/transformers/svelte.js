@@ -1,3 +1,4 @@
+import fs from 'fs'
 import path from 'path'
 import { Transformer } from '../utils/transformer'
 
@@ -10,6 +11,41 @@ const template = (props, paths) => `
 }
 
 export default SvgComponent
+`
+
+const templateMd = () => `
+## Table of Contents
+
+* [Usage](#usage)
+* [Customization](#customization)
+* [Figma](#figma)
+* [License](#license)
+
+## Usage
+
+\`\`\`html
+<script>
+import { CircleIcon } from '@scarlab/icons-svelte/outline'
+</script>
+
+<CircleIcon />
+\`\`\`
+
+## Customization
+
+### Change color
+
+\`\`\`html
+<CircleIcon color="#fb923c" />
+<CircleIcon style="color: #fb923c;" />
+\`\`\`
+
+### Change stroke width
+
+\`\`\`html
+<CircleIcon stroke-width="1" />
+<CircleIcon stroke-width="2" />
+\`\`\`
 `
 
 function serializeObjToAttrs(obj) {
@@ -34,10 +70,12 @@ export default function useSvelte(icons) {
         })
     })
 
-    t.createPackage('svelte', {
-        files: [
-            "outline",
-            "solid"
-        ],
+    t.createPackage('svelte', {})
+
+    t.createFile('README.md', () => {
+        const temp = fs.readFileSync(path.join(__dirname, '../template.md'), 'utf8')
+
+        return temp.replace('{{ framework }}', 'svelte')
+            .replace('{{ content }}', templateMd())
     })
 }

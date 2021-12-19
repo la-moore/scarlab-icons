@@ -1,3 +1,4 @@
+import fs from 'fs'
 import path from 'path'
 import { Transformer } from '../utils/transformer'
 import { pascalize } from '../utils/text-transform'
@@ -26,6 +27,49 @@ export default ${name};
 
 const templateModule = (name, fileName, ext = '') => `
 export { default as ${name} } from './${fileName}${ext}'
+`
+
+const templateMd = () => `
+## Table of Contents
+
+* [Usage](#usage)
+* [Customization](#customization)
+* [Figma](#figma)
+* [License](#license)
+
+## Usage
+
+\`\`\`html
+<template>
+    <circle-icon />
+</template>
+
+<script>
+import { CircleIcon } from '@scarlab/icons-vue/outline'
+
+export default {
+    components: {
+        CircleIcon
+    }
+}
+</script>
+\`\`\`
+
+## Customization
+
+### Change color
+
+\`\`\`html
+<circle-icon color="#fb923c" />
+<circle-icon style="color: #fb923c;" />
+\`\`\`
+
+### Change stroke width
+
+\`\`\`html
+<circle-icon stroke-width="1" />
+<circle-icon stroke-width="2" />
+\`\`\`
 `
 
 function serializeObjToAttrs(obj) {
@@ -81,12 +125,12 @@ export default function useVue(icons) {
         }, { flag: 'a+' })
     })
 
-    t.createPackage('vue', {
-        files: [
-            "index.ts",
-            "index.js",
-            "outline",
-            "solid"
-        ],
+    t.createPackage('vue', {})
+
+    t.createFile('README.md', () => {
+        const temp = fs.readFileSync(path.join(__dirname, '../template.md'), 'utf8')
+
+        return temp.replace('{{ framework }}', 'vue')
+            .replace('{{ content }}', templateMd())
     })
 }
