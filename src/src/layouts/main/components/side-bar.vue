@@ -49,7 +49,7 @@
 import { defineComponent } from 'vue'
 import { useMenu } from '/~/state/menu'
 import { useSettings } from '/~/state/settings'
-import { XAltIcon } from '@scarlab-icons/vue/dist/outline'
+import { XAltIcon } from '@scarlab-icons/vue/outline'
 import { Dialog, DialogPanel, TransitionChild, TransitionRoot } from '@headlessui/vue'
 import SideBarMenu from './side-bar-menu.vue'
 import SideBarHeader from './side-bar-header.vue'

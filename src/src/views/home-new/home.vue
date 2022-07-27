@@ -271,9 +271,9 @@ import BaseButtonIcon from '/~/components/button/button-icon.vue'
 import {
   GithubIcon, SearchAltIcon, JustifyFillIcon, ChevronDownIcon,
   SunIcon, XAltIcon, ClipboardIcon, DocumentDownloadIcon
-} from '@scarlab-icons/vue/dist/outline'
+} from '@scarlab-icons/vue/outline'
 import PACKAGE from '@scarlab-icons/icons/package.json'
-import iconsJson from '@scarlab-icons/icons/dist/icons.json'
+import iconsJson from '@scarlab-icons/icons'
 
 export default defineComponent({
   name: 'HomeView',

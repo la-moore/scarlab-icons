@@ -32,7 +32,7 @@ import { defineComponent } from 'vue'
 import { useMenu } from '/~/state/menu'
 import LogoSm from '/~/components/logo-sm.vue'
 import BaseButtonIcon from '/~/components/button/button-icon.vue'
-import icons from '@scarlab-icons/icons/dist/icons.json'
+import icons from '@scarlab-icons/icons'
 import PACKAGE from '@scarlab-icons/icons/package.json'
 import { XAltIcon } from '@scarlab-icons/vue/outline'
 

@@ -22,7 +22,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { CheckAltIcon } from '@scarlab-icons/vue/dist/outline'
+import { CheckAltIcon } from '@scarlab-icons/vue/outline'
 
 export default defineComponent({
   name: 'App',

@@ -1,6 +1,6 @@
 import { reactive, toRef } from 'vue'
 import { useClipboard } from '/~/plugins/clipboard'
-import icons from '@scarlab-icons/icons/dist/icons.json'
+import icons from '@scarlab-icons/icons'
 import tags from '@scarlab-icons/icons/dist/tags.json'
 import Icon from '/~/core/icon'
 

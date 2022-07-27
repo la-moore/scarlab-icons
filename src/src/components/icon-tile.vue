@@ -75,7 +75,7 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 import { useDarkMode } from '/~/state/dark-mode'
-import { EyeIcon, DuplicateIcon, DocumentDownloadIcon } from '@scarlab-icons/vue/dist/solid'
+import { EyeIcon, DuplicateIcon, DocumentDownloadIcon } from '@scarlab-icons/vue/solid'
 
 export default defineComponent({
   name: 'IconTile',

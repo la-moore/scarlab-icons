@@ -45,7 +45,7 @@ import { defineComponent, computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useMenu } from '/~/state/menu'
 import { useDarkMode } from '/~/state/dark-mode'
-import { GithubIcon, SearchAltIcon, JustifyFillIcon, SunIcon } from '@scarlab-icons/vue/dist/outline'
+import { GithubIcon, SearchAltIcon, JustifyFillIcon, SunIcon } from '@scarlab-icons/vue/outline'
 import BaseButtonIcon from '/~/components/button/button-icon.vue'
 
 export default defineComponent({
