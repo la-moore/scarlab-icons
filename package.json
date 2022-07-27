@@ -8,7 +8,7 @@
     "dev-client": "pnpm run dev --filter @scarlab-icons/client",
     "build-client": "pnpm run build --filter @scarlab-icons/client",
     "build-figma": "pnpm run build --filter @scarlab-icons/figma",
-    "build-all": "pnpm run build --filter @scarlab-icons/vite-figma && pnpm run build --filter @scarlab-icons/vite-figma-utils && pnpm run build --filter @scarlab-icons/figma"
+    "build-all": "pnpm run build --filter @scarlab-icons/transformer && pnpm run build --filter @scarlab-icons/figma && pnpm run build --filter @scarlab-icons/icons && pnpm run build --filter @scarlab-icons/lib && pnpm run build --filter @scarlab-icons/react && pnpm run build --filter @scarlab-icons/svelte && pnpm run build --filter @scarlab-icons/vue"
   },
   "author": "Alex Moore",
   "license": "ISC",
