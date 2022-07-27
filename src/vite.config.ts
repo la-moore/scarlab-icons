@@ -13,4 +13,9 @@ module.exports = {
   plugins: [
     vue()
   ],
+  optimizeDeps: {
+    include: [
+      '@scarlab-icons/vue',
+    ],
+  },
 }
