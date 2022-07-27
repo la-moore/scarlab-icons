@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:figma": "pnpm run build --filter @scarlab-icons/figma",
-    "dev:figma": "pnpm run dev --filter @scarlab-icons/figma",
-    "dev:client": "pnpm run dev --filter @scarlab-icons/client",
-    "build:client": "pnpm run build --filter @scarlab-icons/client",
-    "build:all": "pnpm run build --filter @scarlab-icons/vite-figma && pnpm run build --filter @scarlab-icons/vite-figma-utils && pnpm run build --filter @scarlab-icons/figma"
+    "dev-figma": "pnpm run dev --filter @scarlab-icons/figma",
+    "dev-client": "pnpm run dev --filter @scarlab-icons/client",
+    "build-client": "pnpm run build --filter @scarlab-icons/client",
+    "build-figma": "pnpm run build --filter @scarlab-icons/figma",
+    "build-all": "pnpm run build --filter @scarlab-icons/vite-figma && pnpm run build --filter @scarlab-icons/vite-figma-utils && pnpm run build --filter @scarlab-icons/figma"
   },
   "author": "Alex Moore",
   "license": "ISC",
