@@ -10,8 +10,8 @@
     "dev": "vite"
   },
   "devDependencies": {
-    "@scarlab-icons/icons": "workspace:^1.0.0",
-    "@scarlab-icons/vue": "workspace:^1.0.0",
+    "@scarlab-icons/icons": "workspace:*",
+    "@scarlab-icons/vue": "workspace:*",
     "@figma/plugin-typings": "^1.42.1",
     "@vitejs/plugin-vue": "^2.1.0",
     "@vue/compiler-sfc": "^3.2.29",

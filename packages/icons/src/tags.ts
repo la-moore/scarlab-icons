@@ -426,6 +426,23 @@ export default {
 		"ui",
 		"editor"
 	],
+	"bulb-on": [
+		"lamp",
+		"light",
+		"on",
+	],
+	"bulb": [
+		"lamp",
+		"dark",
+		"off",
+	],
+	"building": [
+		"interface",
+		"ui",
+		"city",
+		"house",
+		"home"
+	],
 	"bold": [
 		"interface",
 		"editor",
@@ -540,6 +557,14 @@ export default {
 		"picture"
 	],
 	"camera": [
+		"camera",
+		"image",
+		"photo",
+		"photograph",
+		"digital",
+		"picture"
+	],
+	"camera-web": [
 		"camera",
 		"image",
 		"photo",
@@ -1171,6 +1196,26 @@ export default {
 		"sign",
 		"math"
 	],
+	"equal-not-alt": [
+		"different",
+		"sign",
+		"math"
+	],
+	"equal-not-alt-circle": [
+		"different",
+		"sign",
+		"math"
+	],
+	"equal-not-alt-square": [
+		"different",
+		"sign",
+		"math"
+	],
+	"equal-not": [
+		"different",
+		"sign",
+		"math"
+	],
 	"euro-circle": [
 		"sign",
 		"money",
@@ -1308,6 +1353,13 @@ export default {
 		"container",
 		"group"
 	],
+	"feather": [
+		"edit",
+		"draw",
+		"design",
+		"pen",
+		"pencil"
+	],
 	"gamepad": [
 		"play",
 		"game",
@@ -1329,6 +1381,11 @@ export default {
 		"spooky",
 		"halloween",
 		"boo"
+	],
+	"gift": [
+		"party",
+		"present",
+		"birthday",
 	],
 	"git-branch": [
 		"code"
@@ -1404,6 +1461,11 @@ export default {
 		"favorite",
 		"dislike"
 	],
+	"heart-broken": [
+		"heart",
+		"favorite",
+		"dislike"
+	],
 	"heart": [
 		"heart",
 		"favorite",
@@ -1435,12 +1497,14 @@ export default {
 		"interface",
 		"ui",
 		"house",
+		"city",
 		"building"
 	],
 	"home": [
 		"interface",
 		"ui",
 		"house",
+		"city",
 		"building"
 	],
 	"hrivnia-circle": [
@@ -1549,6 +1613,10 @@ export default {
 		"electronics",
 		"computer"
 	],
+	"lamp": [
+		"light",
+		"electronics",
+	],
 	"leaf": [
 		"eco",
 		"nature",
@@ -1607,6 +1675,11 @@ export default {
 		"map",
 		"navigation",
 		"marker"
+	],
+	"gps": [
+		"geo",
+		"map",
+		"navigation"
 	],
 	"lock-open": [
 		"open",
@@ -2257,6 +2330,11 @@ export default {
 		"favorite"
 	],
 	"sun": [
+		"sky",
+		"weather",
+		"light"
+	],
+	"haze": [
 		"sky",
 		"weather",
 		"light"

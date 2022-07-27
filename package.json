@@ -1,14 +1,26 @@
 {
   "name": "scarlab",
-  "version": "1.0.0",
+  "version": "1.0.5",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev-figma": "pnpm run dev --filter @scarlab-icons/figma",
-    "dev-client": "pnpm run dev --filter @scarlab-icons/client",
-    "build-client": "pnpm run build --filter @scarlab-icons/client",
-    "build-figma": "pnpm run build --filter @scarlab-icons/figma",
-    "build-all": "pnpm run build --filter @scarlab-icons/transformer && pnpm run build --filter @scarlab-icons/figma && pnpm run build --filter @scarlab-icons/icons && pnpm run build --filter @scarlab-icons/lib && pnpm run build --filter @scarlab-icons/react && pnpm run build --filter @scarlab-icons/svelte && pnpm run build --filter @scarlab-icons/vue"
+    "dev:figma": "pnpm run dev --filter @scarlab-icons/figma",
+    "dev:client": "pnpm run dev --filter @scarlab-icons/client",
+
+    "build:icons": "pnpm run build --filter @scarlab-icons/icons",
+    "build:client": "pnpm run build --filter @scarlab-icons/client",
+    "build:figma": "pnpm run build --filter @scarlab-icons/figma",
+    "build:vue": "pnpm run build --filter @scarlab-icons/vue",
+    "build:react": "pnpm run build --filter @scarlab-icons/react",
+    "build:svelte": "pnpm run build --filter @scarlab-icons/svelte",
+    "build:all": "pnpm run build:icons && pnpm run build:vue && pnpm run build:react && pnpm run build:svelte",
+
+    "publish:lib": "npm publish ./packages/lib",
+    "publish:vue": "npm publish ./packages/vue",
+    "publish:react": "npm publish ./packages/react",
+    "publish:svelte": "npm publish ./packages/svelte",
+    "publish:icons": "npm publish ./packages/icons",
+    "publish:all": "node scripts/on-publish.js pnpm run publish:lib && npm run publish:vue && npm run publish:react && npm run publish:svelte && npm run publish:icons"
   },
   "author": "Alex Moore",
   "license": "ISC",

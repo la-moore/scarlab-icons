@@ -1,27 +1,27 @@
 {
-  "name": "@scarlab-icons/lib",
-  "version": "1.0.4",
-  "description": "",
-  "main": "dist/index.js",
-  "author": "Alex Moore",
-  "license": "ISC",
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org/"
-  },
-  "scripts": {
-    "dev": "ts-node src/index.ts",
-    "build": "rollup --config rollup.config.js"
-  },
-  "devDependencies": {
-    "typescript": "^4.5.5",
-    "rollup": "^2.66.1",
-    "@rollup/plugin-typescript": "^8.3.0",
-    "@rollup/plugin-json": "^4.1.0",
-    "@rollup/plugin-node-resolve": "^13.0.6",
-    "@rollup/plugin-commonjs": "^21.0.1"
-  },
-  "dependencies": {
-    "@scarlab-icons/icons": "workspace:^1.0.0"
-  }
+	"name": "@scarlab-icons/lib",
+	"version": "1.0.5",
+	"description": "",
+	"main": "dist/index.js",
+	"author": "Alex Moore",
+	"license": "ISC",
+	"publishConfig": {
+		"access": "public",
+		"registry": "https://registry.npmjs.org/"
+	},
+	"scripts": {
+		"dev": "ts-node src/index.ts",
+		"build": "rollup --config rollup.config.js"
+	},
+	"devDependencies": {
+		"typescript": "^4.5.5",
+		"rollup": "^2.66.1",
+		"@rollup/plugin-typescript": "^8.3.0",
+		"@rollup/plugin-json": "^4.1.0",
+		"@rollup/plugin-node-resolve": "^13.0.6",
+		"@rollup/plugin-commonjs": "^21.0.1"
+	},
+	"dependencies": {
+		"@scarlab-icons/icons": "workspace:*"
+	}
 }
