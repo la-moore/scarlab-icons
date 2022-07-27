@@ -1,0 +1,39 @@
+{
+  "name": "@scarlab-icons/client",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "vite",
+    "host": "vite --host",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "@la-moore/shared": "github:la-moore/shared#v4",
+    "@scarlab-icons/icons": "workspace:^1.0.0",
+    "@scarlab-icons/vue": "workspace:^1.0.3",
+    "@tailwindcss/aspect-ratio": "^0.4.0",
+    "@headlessui/vue": "^1.6.6",
+    "@kyvg/vue3-notification": "^2.3.5",
+    "vue": "^3.2.6",
+    "vue-code-highlight": "^0.7.8",
+    "vue-router": "^4.0.12"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.2.0",
+    "@typescript-eslint/parser": "^5.2.0",
+    "@vitejs/plugin-vue": "^1.9.2",
+    "@vue/compiler-sfc": "^3.1.1",
+    "@vue/eslint-config-standard": "^6.1.0",
+    "@vue/eslint-config-typescript": "^8.0.0",
+    "autoprefixer": "^10.4.0",
+    "eslint": "^8.3.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.0",
+    "eslint-plugin-vue": "^8.1.1",
+    "postcss": "^8.4.1",
+    "tailwindcss": "^3.0.1",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.3.2",
+    "vite": "^2.6.14"
+  }
+}

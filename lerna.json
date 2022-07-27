@@ -1,0 +1,12 @@
+{
+  "version": "1.0.4",
+  "npmClient": "npm",
+  "useWorkspaces": true,
+  "packages": [
+    "packages/vue",
+    "packages/icons",
+    "packages/svelte",
+    "packages/react",
+    "packages/lib"
+  ]
+}

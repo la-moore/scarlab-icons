@@ -1,40 +1,21 @@
 {
-  "name": "@la-moore/scarlab-icons",
-  "version": "1.0.6",
-  "license": "MIT",
-  "files": [
-    "README.md",
-    "angular",
-    "lib",
-    "dist",
-    "react",
-    "svelte",
-    "svg",
-    "src",
-    "vue"
-  ],
+  "name": "scarlab",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "build": "npm run build-icons && npm run build-js && npm run build-index",
-    "build-js": "rollup --config rollup.config.js",
-    "build-icons": "npx babel-node --presets @babel/preset-env src/icons",
-    "build-index": "npx babel-node --presets @babel/preset-env src/index",
-    "publish": "npm run publish-lib && npm run publish-vue && npm run publish-react",
-    "publish-lib": "npm publish ./lib",
-    "publish-vue": "npm publish ./vue",
-    "publish-react": "npm publish ./react"
+    "build:figma": "pnpm run build --filter @scarlab-icons/figma",
+    "dev:figma": "pnpm run dev --filter @scarlab-icons/figma",
+    "dev:client": "pnpm run dev --filter @scarlab-icons/client",
+    "build:all": "pnpm run build --filter @scarlab-icons/vite-figma && pnpm run build --filter @scarlab-icons/vite-figma-utils && pnpm run build --filter @scarlab-icons/figma"
   },
-  "dependencies": {
-    "rollup-plugin-copy": "^3.4.0"
-  },
+  "author": "Alex Moore",
+  "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.16.0",
-    "@babel/node": "^7.16.0",
-    "@babel/preset-env": "^7.16.4",
-    "@rollup/plugin-json": "^4.1.0",
-    "@rollup/plugin-node-resolve": "^13.0.6",
-    "cheerio": "^1.0.0-rc.10",
-    "rollup-plugin-babel-minify": "^10.0.0",
-    "svgo": "^1.3.2",
-    "typescript": "^4.4.4"
-  }
+    "lerna": "^4.0.0"
+  },
+  "workspaces": [
+    "src",
+    "packages/*"
+  ]
 }

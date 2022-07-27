@@ -1,0 +1,39 @@
+{
+  "compilerOptions": {
+    "target": "es2020",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "removeComments": true,
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "noImplicitAny": false,
+    "strict": true,
+    "strictNullChecks": false,
+    "baseUrl": "./",
+    "outDir": "./tscompiled/",
+    "lib": ["esnext", "dom"],
+    "types": [
+      "vite/client",
+      "@intlify/vite-plugin-vue-i18n/client",
+      "node"
+    ],
+    "paths": {
+      "/~/*": ["src/*"]
+    }
+  },
+  "include": [
+    "types/**/*.d.ts",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ],
+  "files": [
+    "./types/**/*.d.ts"
+  ]
+}

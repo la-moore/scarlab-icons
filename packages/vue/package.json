@@ -1,0 +1,23 @@
+{
+  "name": "@scarlab-icons/vue",
+  "version": "1.0.3",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "author": "Alex Moore",
+  "license": "ISC",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "build": "rimraf dist && ts-node src/index.ts"
+  },
+  "devDependencies": {
+    "vue": "^3.2.31",
+    "ts-node": "^10.5.0",
+    "rimraf": "^3.0.2",
+    "@scarlab-icons/icons": "workspace:^1.0.0",
+    "@scarlab-icons/transformer": "workspace:^1.0.0"
+  }
+}

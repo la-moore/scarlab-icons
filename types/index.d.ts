@@ -1,5 +1,0 @@
-// export * from './shared'
-// export * from './swiper-events'
-// export * from './swiper-options'
-// export * from './modules/public-api'
-export { default as Scarab } from './scarab-class'

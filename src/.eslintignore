@@ -1,0 +1,7 @@
+node_modules
+scripts
+types
+public
+src/icons
+
+.eslintrc.js
