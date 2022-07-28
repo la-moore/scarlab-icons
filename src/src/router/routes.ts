@@ -9,13 +9,13 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/',
     name: 'main',
-    component: () => import('/~/layouts/main-new/main.vue'),
+    component: () => import('/~/layouts/main/main.vue'),
     redirect: { name: 'home' },
     children: [
       {
         path: '',
         name: 'home',
-        component: () => import('/~/views/home-new/home.vue'),
+        component: () => import('/~/views/home/home.vue'),
       },
     ]
   },
