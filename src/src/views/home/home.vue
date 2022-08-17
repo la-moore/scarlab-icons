@@ -62,7 +62,7 @@
           >
             <div
               class="cursor-pointer group rounded-xl h-44 border border-gray-300 hover:bg-gray-300 flex flex-col items-center py-3 dark:border-gray-700 dark:hover:bg-gray-700"
-              @click="() => getIcon(icon.name)"
+              @click="() => getIcon(icon.name, icon.type)"
             >
               <div class="text-gray-500 dark:text-gray-300 flex-1 flex items-center justify-center">
                 <div v-html="icon.toSvg(iconSettings)" />
@@ -340,8 +340,13 @@ export default defineComponent({
         .filter((tag) => tag)
     })
 
-    function getIcon(name: string) {
-      const icon = icons.value.find((item) => item.name === name)
+    function getIcon(name: string, type: string) {
+      const icon = icons.value.find((item) => {
+        return [
+          item.name === name,
+          item.type === type
+        ].every((v) => v)
+      })
 
       if (!icon) {
         return

@@ -137,8 +137,8 @@ importers:
       '@headlessui/vue': ^1.6.7
       '@kyvg/vue3-notification': ^2.3.6
       '@la-moore/shared': github:la-moore/shared#v4
-      '@scarlab-icons/icons': workspace:*
-      '@scarlab-icons/vue': workspace:*
+      '@scarlab-icons/icons': ^1.0.5
+      '@scarlab-icons/vue': ^1.0.5
       '@tailwindcss/aspect-ratio': ^0.4.0
       '@typescript-eslint/eslint-plugin': ^5.31.0
       '@typescript-eslint/parser': ^5.31.0
