@@ -1,6 +1,6 @@
 {
 	"name": "@scarlab-icons/lib",
-	"version": "1.0.5",
+	"version": "2.0.0",
 	"description": "",
 	"main": "dist/index.js",
 	"author": "Alex Moore",
@@ -11,17 +11,19 @@
 	},
 	"scripts": {
 		"dev": "ts-node src/index.ts",
-		"build": "rollup --config rollup.config.js"
+		"build": "rimraf dist && rollup --config rollup.config.js"
 	},
 	"devDependencies": {
 		"typescript": "^4.5.5",
 		"rollup": "^2.66.1",
+		"rimraf": "^5.0.0",
 		"@rollup/plugin-typescript": "^8.3.0",
 		"@rollup/plugin-json": "^4.1.0",
 		"@rollup/plugin-node-resolve": "^13.0.6",
 		"@rollup/plugin-commonjs": "^21.0.1"
 	},
 	"dependencies": {
-		"@scarlab-icons/icons": "workspace:*"
+		"@scarlab-icons/icons": "*",
+		"@scarlab-icons/transformer": "*"
 	}
 }

@@ -8,13 +8,35 @@
   "author": "Alex Moore",
   "license": "ISC",
   "scripts": {
-    "build": "rimraf dist && tsup src/index.ts --dts --format cjs,esm"
+    "build": "rimraf dist && tsup src/index.ts --dts --format cjs,esm",
+    "build-all": "npm run build-json && npm run build-vue && npm run build-react && npm run build-svelte",
+    "build-json": "ts-node cmd.ts json /svg/base/*.svg",
+    "build-vue": "ts-node cmd.ts vue /svg/base/*.svg -g vue",
+    "build-react": "ts-node cmd.ts react /svg/base/*.svg -g react",
+    "build-svelte": "ts-node cmd.ts svelte /svg/base/*.svg -g svelte",
+    "build-json-outline": "ts-node cmd.ts json /svg/base/*.svg /svg/outline/*.svg -g outline -s stroke",
+    "build-json-ghost": "ts-node cmd.ts json /svg/ghost/*.svg -g ghost -s ghost",
+    "build-json-solid": "ts-node cmd.ts json /svg/solid/*.svg -g solid -s fill"
   },
   "devDependencies": {
     "@types/node": "^17.0.13",
-    "ts-node": "^10.4.0",
+    "@types/babel__core": "^7.20.0",
+    "@types/yargs": "^17.0.24"
+  },
+  "dependencies": {
+    "@svgr/core": "^7.0.0",
+    "@svgr/plugin-jsx": "^7.0.0",
+    "@vue/compiler-sfc": "^3.2.47",
+    "@vue/compiler-dom": "^3.2.47",
+    "glob": "^10.2.2",
+    "rimraf": "^5.0.0",
+    "svg-to-svelte": "^2.2.1",
+    "svgo": "^3.0.2",
+    "svgson": "^5.2.1",
+    "ts-node": "^10.5.0",
+    "yargs": "^17.7.2",
     "typescript": "^4.5.5",
-    "rimraf": "^3.0.2",
+    "commander": "^10.0.1",
     "tsup": "^5.11.13"
   }
 }

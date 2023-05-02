@@ -100,19 +100,29 @@ export default {
 		"danger"
 	],
 	"align-arrow-down": [
-		"alignment"
+		"alignment",
+		"direction",
+		"arrow"
 	],
 	"align-arrow-left": [
-		"alignment"
+		"alignment",
+		"direction",
+		"arrow"
 	],
 	"align-arrow-right": [
-		"alignment"
+		"alignment",
+		"direction",
+		"arrow"
 	],
 	"align-arrow-up": [
-		"alignment"
+		"alignment",
+		"direction",
+		"arrow"
 	],
 	"align-bottom": [
-		"alignment"
+		"alignment",
+		"direction",
+		"arrow"
 	],
 	"align-horizontal-center": [
 		"alignment"
@@ -160,134 +170,171 @@ export default {
 		"box"
 	],
 	"arrow-down-alt": [
+		"load",
 		"download",
+		"direction",
 		"arrow"
 	],
 	"arrow-down-circle": [
+		"load",
 		"download",
+		"direction",
 		"arrow"
 	],
 	"arrow-down-left-alt": [
-		"arrow"
+		"arrow",
+		"direction"
 	],
 	"arrow-down-left-circle": [
-		"arrow"
+		"arrow",
+		"direction"
 	],
 	"arrow-down-left-square": [
-		"arrow"
+		"arrow",
+		"direction"
 	],
 	"arrow-down-left": [
-		"arrow"
+		"arrow",
+		"direction"
 	],
 	"arrow-down-right-alt": [
-		"arrow"
+		"arrow",
+		"direction"
 	],
 	"arrow-down-right-circle": [
-		"arrow"
+		"arrow",
+		"direction"
 	],
 	"arrow-down-right-square": [
-		"arrow"
+		"arrow",
+		"direction"
 	],
 	"arrow-down-right": [
-		"arrow"
+		"arrow",
+		"direction"
 	],
 	"arrow-down-square": [
-		"arrow"
+		"arrow",
+		"direction"
 	],
 	"arrow-down": [
+		"load",
 		"download",
+		"direction",
 		"arrow"
 	],
 	"arrow-left-alt": [
 		"back",
 		"previous",
+		"direction",
 		"arrow"
 	],
 	"arrow-left-circle": [
 		"back",
 		"previous",
+		"direction",
 		"arrow"
 	],
 	"arrow-left-square": [
 		"back",
 		"previous",
+		"direction",
 		"arrow"
 	],
 	"arrow-left": [
 		"back",
 		"previous",
+		"direction",
 		"arrow",
 		"return"
 	],
 	"arrow-ramp-left": [
 		"arrow",
 		"ramp",
+		"direction",
 		"turn"
 	],
 	"arrow-ramp-right": [
 		"arrow",
 		"ramp",
+		"direction",
 		"turn"
 	],
 	"arrow-right-alt": [
 		"next",
 		"skip",
+		"direction",
 		"arrow"
 	],
 	"arrow-right-circle": [
 		"next",
 		"skip",
+		"direction",
 		"arrow"
 	],
 	"arrow-right-square": [
 		"next",
 		"skip",
-		"arrow"
+		"arrow",
+		"direction"
 	],
 	"arrow-right": [
 		"next",
 		"skip",
-		"arrow"
+		"arrow",
+		"direction"
 	],
 	"arrow-up-alt": [
 		"upload",
-		"arrow"
+		"arrow",
+		"direction"
 	],
 	"arrow-up-circle": [
 		"upload",
-		"arrow"
+		"arrow",
+		"direction"
 	],
 	"arrow-up-left-alt": [
-		"arrow"
+		"arrow",
+		"direction"
 	],
 	"arrow-up-left-circle": [
-		"arrow"
+		"arrow",
+		"direction"
 	],
 	"arrow-up-left-square": [
-		"arrow"
+		"arrow",
+		"direction"
 	],
 	"arrow-up-left": [
-		"arrow"
+		"arrow",
+		"direction"
 	],
 	"arrow-up-right-alt": [
-		"arrow"
+		"arrow",
+		"direction"
 	],
 	"arrow-up-right-circle": [
-		"arrow"
+		"arrow",
+		"direction"
 	],
 	"arrow-up-right-square": [
-		"arrow"
+		"arrow",
+		"direction"
 	],
 	"arrow-up-right": [
-		"arrow"
+		"arrow",
+		"direction"
 	],
 	"arrow-up-square": [
 		"upload",
-		"arrow"
+		"arrow",
+		"direction"
 	],
 	"arrow-up": [
 		"upload",
-		"arrow"
+		"arrow",
+		"direction"
 	],
 	"at-symbol": [
 		"sign",
@@ -429,12 +476,12 @@ export default {
 	"bulb-on": [
 		"lamp",
 		"light",
-		"on",
+		"on"
 	],
 	"bulb": [
 		"lamp",
 		"dark",
-		"off",
+		"off"
 	],
 	"building": [
 		"interface",
@@ -454,6 +501,7 @@ export default {
 		"study",
 		"read",
 		"reading",
+		"academy",
 		"library",
 		"literature",
 		"education"
@@ -777,8 +825,10 @@ export default {
 		"alarm"
 	],
 	"cloud-download": [
+		"arrow",
 		"load",
 		"cloud",
+		"storage",
 		"download"
 	],
 	"cloud-drizzle": [
@@ -819,6 +869,8 @@ export default {
 		"blizzard"
 	],
 	"cloud-upload": [
+		"storage",
+		"arrow",
 		"upload",
 		"cloud"
 	],
@@ -902,28 +954,44 @@ export default {
 		"editor"
 	],
 	"corner-down-left": [
-		"corner"
+		"corner",
+		"arrow",
+		"direction"
 	],
 	"corner-down-right": [
-		"corner"
+		"corner",
+		"arrow",
+		"direction"
 	],
 	"corner-left-down": [
-		"corner"
+		"corner",
+		"arrow",
+		"direction"
 	],
 	"corner-left-up": [
-		"corner"
+		"corner",
+		"arrow",
+		"direction"
 	],
 	"corner-right-down": [
-		"corner"
+		"corner",
+		"arrow",
+		"direction"
 	],
 	"corner-right-up": [
-		"corner"
+		"corner",
+		"arrow",
+		"direction"
 	],
 	"corner-up-left": [
-		"corner"
+		"corner",
+		"arrow",
+		"direction"
 	],
 	"corner-up-right": [
-		"corner"
+		"corner",
+		"arrow",
+		"direction"
 	],
 	"credit-card": [
 		"commerce",
@@ -1039,6 +1107,7 @@ export default {
 	],
 	"document-download": [
 		"file",
+		"storage",
 		"document",
 		"load",
 		"download"
@@ -1137,7 +1206,9 @@ export default {
 		"currency"
 	],
 	"download": [
-		"load"
+		"storage",
+		"load",
+		"download"
 	],
 	"droplet": [
 		"liquid",
@@ -1157,18 +1228,22 @@ export default {
 		"pencil"
 	],
 	"emoji-happy-square": [
+		"human",
 		"face",
 		"emotion"
 	],
 	"emoji-happy": [
+		"human",
 		"face",
 		"emotion"
 	],
 	"emoji-sad-square": [
+		"human",
 		"face",
 		"emotion"
 	],
 	"emoji-sad": [
+		"human",
 		"face",
 		"emotion"
 	],
@@ -1372,6 +1447,7 @@ export default {
 	"gauge": [
 		"meter",
 		"dashboard",
+		"measure",
 		"pressure"
 	],
 	"ghost": [
@@ -1385,7 +1461,7 @@ export default {
 	"gift": [
 		"party",
 		"present",
-		"birthday",
+		"birthday"
 	],
 	"git-branch": [
 		"code"
@@ -1434,6 +1510,7 @@ export default {
 	"goblet": [
 		"wine",
 		"cup",
+		"dishes",
 		"restaurant"
 	],
 	"grid": [
@@ -1442,7 +1519,9 @@ export default {
 		"placement",
 		"layout"
 	],
-	"hand": [],
+	"hand": [
+		"human"
+	],
 	"hash-alt": [
 		"tag",
 		"social"
@@ -1615,7 +1694,7 @@ export default {
 	],
 	"lamp": [
 		"light",
-		"electronics",
+		"electronics"
 	],
 	"leaf": [
 		"eco",
@@ -1672,6 +1751,7 @@ export default {
 	],
 	"location": [
 		"geo",
+		"gps",
 		"map",
 		"navigation",
 		"marker"
@@ -1679,6 +1759,7 @@ export default {
 	"gps": [
 		"geo",
 		"map",
+		"location",
 		"navigation"
 	],
 	"lock-open": [
@@ -1826,6 +1907,7 @@ export default {
 	],
 	"more-horizontal-circle": [
 		"interface",
+		"horizontal",
 		"ui",
 		"menu",
 		"dots",
@@ -1835,6 +1917,7 @@ export default {
 	],
 	"more-horizontal-square": [
 		"interface",
+		"horizontal",
 		"ui",
 		"menu",
 		"dots",
@@ -1844,6 +1927,7 @@ export default {
 	],
 	"more-horizontal": [
 		"interface",
+		"horizontal",
 		"ui",
 		"menu",
 		"dots",
@@ -1856,6 +1940,7 @@ export default {
 		"ui",
 		"menu",
 		"dots",
+		"vertical",
 		"option",
 		"etc",
 		"other"
@@ -1863,6 +1948,7 @@ export default {
 	"more-vertical-square": [
 		"interface",
 		"ui",
+		"vertical",
 		"menu",
 		"dots",
 		"option",
@@ -1873,6 +1959,7 @@ export default {
 		"interface",
 		"ui",
 		"menu",
+		"vertical",
 		"dots",
 		"option",
 		"etc",
@@ -1888,7 +1975,8 @@ export default {
 		"tea",
 		"restaurant",
 		"coffee",
-		"cup"
+		"cup",
+		"dishes"
 	],
 	"overline": [
 		"editor",
@@ -1901,7 +1989,12 @@ export default {
 		"attach",
 		"attachment"
 	],
-	"parentheses": [],
+	"parentheses": [
+		"sign",
+		"brackets",
+		"group",
+		"math"
+	],
 	"pause-alt": [
 		"interface",
 		"ui",
@@ -1947,6 +2040,7 @@ export default {
 		"control"
 	],
 	"paypal": [
+		"logo",
 		"brand"
 	],
 	"pencil-alt": [
@@ -2056,7 +2150,13 @@ export default {
 		"game",
 		"control"
 	],
-	"plus-alt": [],
+	"plus-alt": [
+		"sign",
+		"math",
+		"new",
+		"add",
+		"create"
+	],
 	"plus-circle": [
 		"sign",
 		"math",
@@ -2127,6 +2227,7 @@ export default {
 		"presentation",
 		"chart",
 		"statistics",
+		"trending",
 		"business",
 		"diagram",
 		"graph"
@@ -2221,7 +2322,7 @@ export default {
 		"currency"
 	],
 	"scarlab": [
-		"logo"
+		"logo",
 	],
 	"scissors": [
 		"cut"
@@ -2347,14 +2448,18 @@ export default {
 		"sort",
 		"arrow",
 		"replace",
-		"reverse"
+		"reverse",
+		"horizontal",
+		"direction"
 	],
 	"switch-vertical": [
 		"swap",
 		"sort",
 		"arrow",
 		"replace",
-		"reverse"
+		"vertical",
+		"reverse",
+		"direction"
 	],
 	"tablet": [
 		"device",
@@ -2498,5 +2603,260 @@ export default {
 		"camera",
 		"light",
 		"lightning"
+	],
+	"adjustments-horizontal": [
+		"adjust",
+		"balance",
+		"equalizer",
+		"horizontal",
+		"settings",
+		"mixer",
+		"regulator",
+		"levels",
+		"slider"
+	],
+	"cup": [
+		"dishes",
+		"restaurant"
+	],
+	"crown": [
+		"hat",
+		"king"
+	],
+	"disc": [
+		"music",
+		"save",
+		"load"
+	],
+	"equal-not-circle": [
+		"different",
+		"sign",
+		"math"
+	],
+	"equal-not-square": [
+		"different",
+		"sign",
+		"math"
+	],
+	"exposure": [
+		"interface",
+		"ui",
+		"editor"
+	],
+	"flip-horizontal": [
+		"interface",
+		"ui",
+		"horizontal",
+		"editor"
+	],
+	"flip-vertical": [
+		"interface",
+		"ui",
+		"vertical",
+		"editor"
+	],
+	"gps-circle": [
+		"geo",
+		"map",
+		"navigation",
+		"location"
+	],
+	"gps-square": [
+		"geo",
+		"map",
+		"navigation",
+		"location"
+	],
+	"help-square": [
+		"interface",
+		"ui",
+		"sign",
+		"question",
+		"info"
+	],
+	"license": [
+		"contract",
+		"business",
+		"agreement",
+		"certificate",
+		"document",
+		"deal",
+		"award"
+	],
+	"list-details": [
+		"interface",
+		"ui",
+		"list",
+		"item",
+		"order"
+	],
+	"luggage": [
+		"bag",
+		"travel"
+	],
+	"measure": [
+		"meter",
+		"gauge",
+		"dashboard",
+		"pressure"
+	],
+	"mountain": [
+		"eco",
+		"travel",
+		"landscape",
+		"nature"
+	],
+	"mouse": [
+		"computer",
+		"point",
+		"mouse",
+		"cursor"
+	],
+	"news": [
+		"rss",
+		"feed",
+		"news"
+	],
+	"note": [
+		"voice",
+		"sound",
+		"audio",
+		"media",
+		"music"
+	],
+	"notebook": [
+		"notebook",
+		"notepad",
+		"write",
+		"read",
+		"clip",
+		"save",
+		"list",
+		"todo"
+	],
+	"notes": [
+		"notebook",
+		"notepad",
+		"write",
+		"read",
+		"clip",
+		"list",
+		"save"
+	],
+	"store": [
+		"market",
+		"shop",
+		"store"
+	],
+	"trash": [
+		"delete",
+		"remove",
+		"empty",
+		"erase"
+	],
+	"arrow-turn-down": [
+		"arrow",
+		"direction"
+	],
+	"arrow-turn-left": [
+		"arrow",
+		"back",
+		"direction"
+	],
+	"arrow-turn-right": [
+		"arrow",
+		"direction"
+	],
+	"arrow-turn-up": [
+		"arrow",
+		"direction"
+	],
+	"bars-2": [
+		"interface",
+		"ui",
+		"list",
+		"menu"
+	],
+	"bars-3": [
+		"interface",
+		"ui",
+		"list",
+		"menu"
+	],
+	"capture": [
+		"area",
+		"circle"
+	],
+	"cast": [
+		"stream",
+		"cast",
+		"mirroring",
+		"screen",
+		"monitor"
+	],
+	"command": [
+		"mac",
+		"macos",
+		"code",
+		"prompt"
+	],
+	"crosshair": [
+		"area",
+		"plus"
+	],
+	"download-alt": [
+		"storage",
+		"load",
+		"download"
+	],
+	"list-check": [
+		"interface",
+		"ui",
+		"list",
+		"item",
+		"order"
+	],
+	"list": [
+		"interface",
+		"ui",
+		"list",
+		"item",
+		"order"
+	],
+	"replace": [
+		"repeat",
+		"replace",
+		"reverse"
+	],
+	"scan": [
+		"scanner",
+		"commerce",
+		"code"
+	],
+	"select": [
+		"interface",
+		"ui",
+		"area",
+		"select"
+	],
+	"trending-down": [
+		"chart",
+		"statistics",
+		"trending",
+		"business",
+		"diagram",
+		"graph"
+	],
+	"trending-up": [
+		"chart",
+		"trending",
+		"statistics",
+		"business",
+		"diagram",
+		"graph"
+	],
+	"upload-alt": [
+		"upload",
+		"arrow"
 	]
 }

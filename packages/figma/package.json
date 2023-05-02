@@ -10,8 +10,9 @@
     "dev": "vite"
   },
   "devDependencies": {
-    "@scarlab-icons/icons": "workspace:*",
-    "@scarlab-icons/vue": "workspace:*",
+    "@scarlab-icons/icons": "*",
+    "@scarlab-icons/vue": "*",
+    "@scarlab-icons/vite-plugin-figma": "*",
     "@figma/plugin-typings": "^1.42.1",
     "@vitejs/plugin-vue": "^2.1.0",
     "@vue/compiler-sfc": "^3.2.29",
@@ -22,7 +23,6 @@
     "vite": "^2.7.13",
     "vite-plugin-copy": "^0.1.6",
     "vite-plugin-singlefile": "^0.6.3",
-    "vue": "^3.2.29",
-    "vite-plugin-figma": "^0.1.0"
+    "vue": "^3.2.29"
   }
 }

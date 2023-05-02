@@ -7,7 +7,7 @@
              placeholder="Search...">
       <div class="h-10 w-10 flex justify-center items-center cursor-pointer"
            @click="query = ''">
-        <x-icon />
+        <x-icon stroke-width="1" />
       </div>
     </div>
 
@@ -20,8 +20,8 @@
             {{ item.label }}
           </div>
           <div class="ml-3 -mr-3  w-10 flex justify-center items-center">
-            <minus-icon v-if="item.isOpen" />
-            <plus-icon v-else />
+            <minus-icon stroke-width="1" v-if="item.isOpen" />
+            <plus-icon stroke-width="1" v-else />
           </div>
         </div>
 
@@ -30,8 +30,8 @@
           <template v-for="(icon, idx) in item.icons"
                     :key="idx">
             <div class="w-1/6 h-10 flex justify-center cursor-pointer items-center flex-shrink-0 hover:bg-gray-100"
-                 @click="() => postMessage('CREATE_SVG_FRAME', { svg: toSvg(icon), name: icon.name })">
-              <div v-html="toSvg(icon)" />
+                 @click="() => postMessage('CREATE_SVG_FRAME', { svg: toSvg(icon, { width: '24', height: '24' }), name: icon.name })">
+              <div v-html="toSvg(icon, { width: '24', height: '24' })" />
             </div>
           </template>
         </div>
@@ -53,7 +53,7 @@
 
 <script lang="ts">
 import { defineComponent, reactive, ref, computed, watch, onMounted } from 'vue'
-import { XIcon, PlusIcon, MinusIcon } from '@scarlab-icons/vue/dist/outline'
+import { XIcon, PlusIcon, MinusIcon } from '@scarlab-icons/vue/outline'
 import { toSvg } from './utils'
 import icons from '@scarlab-icons/icons'
 import pck from '@scarlab-icons/icons/package.json'
@@ -72,17 +72,17 @@ export default defineComponent({
       {
         label: 'Outline',
         isOpen: false,
-        icons: computed(() => icons.filter((icon) => icon.path.split('/').includes('outline') && icon.name.includes(query.value)))
+        icons: computed(() => icons.filter((icon) => icon.directory === 'outline' && icon.name.includes(query.value)))
       },
       {
         label: 'Solid',
         isOpen: false,
-        icons: computed(() => icons.filter((icon) => icon.path.split('/').includes('solid') && icon.name.includes(query.value)))
+        icons: computed(() => icons.filter((icon) => icon.directory === 'solid' && icon.name.includes(query.value)))
       },
       {
         label: 'Ghost',
         isOpen: false,
-        icons: computed(() => icons.filter((icon) => icon.path.split('/').includes('ghost') && icon.name.includes(query.value)))
+        icons: computed(() => icons.filter((icon) => icon.directory === 'ghost' && icon.name.includes(query.value)))
       }
     ])
 

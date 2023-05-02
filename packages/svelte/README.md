@@ -1,4 +1,4 @@
-<p align="center"><a href="http://scarlab-icons.la-moore.ru" target="_blank" rel="noopener noreferrer"><img width="100" src="http://scarlab-icons.la-moore.ru/images/scarab-logo.png" alt="Scarlab logo"></a></p>
+<p align="center"><a href="https://scarlab-icons.la-moore.ru" target="_blank" rel="noopener noreferrer"><img width="100" src="https://scarlab-icons.la-moore.ru/images/scarab-logo.png" alt="Scarlab logo"></a></p>
 
 <p align="center">
   <a href="https://www.npmjs.com/package/@scarlab-icons/svelte"><img src="https://img.shields.io/npm/v/@scarlab-icons/svelte?color=%23cb0000" alt="npm version"></a>

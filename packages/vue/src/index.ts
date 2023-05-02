@@ -1,124 +1,89 @@
-import path from 'path'
 import icons from '@scarlab-icons/icons'
-import { Transformer } from '@scarlab-icons/transformer'
+import {TransformToVue, stringifySvg, pascalize, clearDist} from '@scarlab-icons/transformer'
+import fs from 'fs'
+import path from 'path'
 
-const OUTPUT_DIR = path.join(__dirname, '../dist/')
-
-const svgProps = {
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 24,
-    height: 24,
-    viewBox: "0 0 24 24",
-    fill: "none",
-    stroke: "none",
-}
-
-function serializeObjToAttrs(obj: any) {
-    return Object.keys(obj)
-        .map(key => `"${key}": "${obj[key]}"`)
-        .join(', \n\t')
-}
-
-const template = (paths: any[]) => `
-import { createElementVNode as _createElementVNode, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue"
-
-export default function render(_ctx, _cache) {
-  return (_openBlock(), _createElementBlock("svg", {
-    ${ serializeObjToAttrs(svgProps) },
-    ..._ctx
-  }, [
-    ${ paths.map(params => `_createElementVNode("path", ${JSON.stringify(params)})`).join(', \n\t') }
-  ]))
-}
-`
-
-const templateTs = (name: string) => `
-import { RenderFunction } from 'vue';
+const type = (name: string) => `import { RenderFunction } from 'vue';
 declare const ${name}: RenderFunction;
 export default ${name};
 `
 
-const templateModule = (name: string, fileName: string, ext = '') => `
-export { default as ${name} } from './${fileName}${ext}'
-`
+function generateIndexFile(file: string) {
+    fs.writeFileSync(
+        path.resolve(__dirname, `../${file}/index.js`),
+        icons
+            .filter((icon: any) => icon.directory === file)
+            .map((icon: any) => {
+                const name = pascalize(icon.name + '-icon')
 
-const t = new Transformer({
-    outputDir: OUTPUT_DIR
-})
+                return `export { default as ${name} } from './${icon.name}.js';`
+            })
+            .join('\n')
+    )
 
-t.remove('../index.ts')
-t.remove('../index.js')
-t.remove('../ghost.ts')
-t.remove('../ghost.js')
-t.remove('../outline.ts')
-t.remove('../outline.js')
-t.remove('../solid.ts')
-t.remove('../solid.js')
+    fs.writeFileSync(
+        path.resolve(__dirname, `../${file}/index.ts`),
+        icons
+            .filter((icon: any) => icon.directory === file)
+            .map((icon: any) => {
+                const name = pascalize(icon.name + '-icon')
 
-icons.forEach((icon: any) => {
-    const path = icon.path.split('.')[0]
-    const type = icon.path.split('/')[0]
+                return `export { default as ${name} } from './${icon.name}';`
+            })
+            .join('\n')
+    )
+}
 
-    t.createFile(`${path.split('/').join('-')}.js`, () => {
-        return template(icon.paths)
-    })
-    t.createFile(`${path.split('/').join('-')}.ts`, () => {
-        return templateTs(t.pascalize(icon.name))
-    })
+async function main() {
+    const mainOutput = path.resolve(__dirname)
 
-    t.createFile(`../${type}.js`, () => {
-        return templateModule(
-            t.pascalize([icon.name, 'icon'].join('-')),
-            'dist/' + path.split('/').join('-'),
-            '.js',
-        )
-    }, { flag: 'a+' })
-    t.createFile(`../${type}.ts`, () => {
-        return templateModule(
-            t.pascalize([icon.name, 'icon'].join('-')),
-            'dist/' + path.split('/').join('-'),
-        )
-    }, { flag: 'a+' })
+    await clearDist(path.resolve(__dirname, '../outline'))
+    await clearDist(path.resolve(__dirname, '../solid'))
+    await clearDist(path.resolve(__dirname, '../ghost'))
 
-    t.createFile('../index.js', () => {
-        return templateModule(
-            t.pascalize(path.split('/').join('-')),
-            'dist/' + path.split('/').join('-'),
-            '.js',
-        )
-    }, { flag: 'a+' })
-    t.createFile('../index.ts', () => {
-        return templateModule(
-            t.pascalize(path.split('/').join('-')),
-            'dist/' + path.split('/').join('-')
-        )
-    }, { flag: 'a+' })
+    for (let icon of icons) {
+        icon.svg.attributes['ctx'] = ''
 
-    t.createFile(`${type}.js`, () => {
-        return templateModule(
-            t.pascalize([icon.name, 'icon'].join('-')),
-            path.split('/').join('-'),
-            '.js',
-        )
-    }, { flag: 'a+' })
-    t.createFile(`${type}.ts`, () => {
-        return templateModule(
-            t.pascalize([icon.name, 'icon'].join('-')),
-            path.split('/').join('-'),
-        )
-    }, { flag: 'a+' })
+        const output = path.resolve(__dirname, '../', icon.directory)
+        const name = [icon.directory, icon.name].join('-')
+        const svg = stringifySvg(icon.svg, {
+            transformAttr: (key, value, escape) => value ? `${key}="${escape(value)}"`: key
+        })
 
-    t.createFile('index.js', () => {
-        return templateModule(
-            t.pascalize(path.split('/').join('-')),
-            path.split('/').join('-'),
-            '.js',
-        )
-    }, { flag: 'a+' })
-    t.createFile('index.ts', () => {
-        return templateModule(
-            t.pascalize(path.split('/').join('-')),
-            path.split('/').join('-')
-        )
-    }, { flag: 'a+' })
-})
+        fs.writeFileSync(`${output}/${icon.name}.js`, await TransformToVue(svg))
+        fs.writeFileSync(`${output}/${icon.name}.ts`, type(pascalize(name)))
+    }
+
+    generateIndexFile('ghost')
+    generateIndexFile('outline')
+    generateIndexFile('solid')
+
+    fs.writeFileSync(
+        path.resolve(__dirname, '../index.js'),
+        icons
+            .map((icon: any) => {
+                const path = [icon.directory, icon.name].join('-')
+                const name = pascalize(path)
+
+                return `export { default as ${name} } from './${icon.directory}/${icon.name}.js';`
+            })
+            .join('\n')
+    )
+
+    fs.writeFileSync(
+        path.resolve(__dirname, '../index.ts'),
+        icons
+            .map((icon: any) => {
+                const path = [icon.directory, icon.name].join('-')
+                const name = pascalize(path)
+
+                return `export { default as ${name} } from './${icon.directory}/${icon.name}';`
+            })
+            .join('\n')
+    )
+
+    console.log(`Transformed ${icons.length} icons`)
+    console.log(`Output: ${mainOutput}`)
+}
+
+main()

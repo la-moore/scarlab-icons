@@ -1,40 +1,26 @@
-import path from 'path'
 import icons from '@scarlab-icons/icons'
-import { Transformer } from '@scarlab-icons/transformer'
+import {clearDist, TransformToSvelte, stringifySvg } from '@scarlab-icons/transformer'
+import fs from 'fs'
+import path from 'path'
 
-const OUTPUT_DIR = path.join(__dirname, '../dist/')
+async function main() {
+    await clearDist(path.resolve(__dirname, '../outline'))
+    await clearDist(path.resolve(__dirname, '../solid'))
+    await clearDist(path.resolve(__dirname, '../ghost'))
 
-const svgProps = {
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 24,
-    height: 24,
-    viewBox: "0 0 24 24",
-    fill: "none",
-    stroke: "none",
+    const mainOutput = path.resolve(__dirname)
+
+    for (let icon of icons) {
+        const output = path.resolve(__dirname, '../', icon.directory)
+        const svg = stringifySvg(icon.svg, {
+            transformAttr: (key, value, escape) => value ? `${key}="${escape(value)}"`: key
+        })
+
+        fs.writeFileSync(`${output}/${icon.name}.svelte`, await TransformToSvelte(svg))
+    }
+
+    console.log(`Transformed ${icons.length} icons`)
+    console.log(`Output: ${mainOutput}`)
 }
 
-function serializeObjToAttrs(obj: any) {
-    return Object.keys(obj)
-        .map(key => `${key}="${obj[key]}"`)
-        .join(' ')
-}
-
-const template = (paths: any[]) => `
-<svg ${serializeObjToAttrs(svgProps)} ${'{...$$props}'}>
-    ${ paths.map(attrs => `<path ${serializeObjToAttrs(attrs)} />`).join('\n\t') }
-</svg>
-
-export default SvgComponent
-`
-
-const t = new Transformer({
-    outputDir: OUTPUT_DIR
-})
-
-icons.forEach((icon) => {
-    const path = icon.path.split('.')[0]
-
-    t.createFile(`${path.split('/').join('-')}.svelte`, () => {
-        return template(icon.paths)
-    })
-})
+main()

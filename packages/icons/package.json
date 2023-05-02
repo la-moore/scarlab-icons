@@ -1,6 +1,6 @@
 {
 	"name": "@scarlab-icons/icons",
-	"version": "1.0.5",
+	"version": "2.0.0",
 	"description": "",
 	"main": "dist/index.js",
 	"module": "dist/index.mjs",
@@ -16,13 +16,9 @@
 	},
 	"devDependencies": {
 		"@types/node": "^17.0.13",
-		"@scarlab-icons/transformer": "workspace:*",
-		"domhandler": "^4.3.0",
+		"@scarlab-icons/transformer": "*",
 		"ts-node": "^10.4.0",
 		"typescript": "^4.5.5",
-		"rimraf": "^3.0.2"
-	},
-	"dependencies": {
-		"cheerio": "^1.0.0-rc.10"
+		"rimraf": "^5.0.0"
 	}
 }

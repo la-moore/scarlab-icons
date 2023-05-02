@@ -1,6 +1,6 @@
 const vue = require('@vitejs/plugin-vue')
 const { defineConfig } = require('vite')
-const { FigmaPlugin } = require('vite-plugin-figma')
+const { FigmaPlugin } = require('@scarlab-icons/vite-plugin-figma')
 const { viteSingleFile } = require('vite-plugin-singlefile')
 
 export default defineConfig({

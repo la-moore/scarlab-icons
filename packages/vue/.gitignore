@@ -4,3 +4,8 @@ node_modules
 tscompiled
 *.local
 dist
+solid
+outline
+ghost
+index.js
+index.ts

@@ -1,19 +1,18 @@
 {
   "name": "scarlab",
-  "version": "1.0.5",
+  "version": "2.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "dev:figma": "pnpm run dev --filter @scarlab-icons/figma",
-    "dev:client": "pnpm run dev --filter @scarlab-icons/client",
+    "build:test": "npm run build -w @scarlab-icons/test",
 
-    "build:icons": "pnpm run build --filter @scarlab-icons/icons",
-    "build:client": "pnpm run build --filter @scarlab-icons/client",
-    "build:figma": "pnpm run build --filter @scarlab-icons/figma",
-    "build:vue": "pnpm run build --filter @scarlab-icons/vue",
-    "build:react": "pnpm run build --filter @scarlab-icons/react",
-    "build:svelte": "pnpm run build --filter @scarlab-icons/svelte",
-    "build:all": "pnpm run build:icons && pnpm run build:vue && pnpm run build:react && pnpm run build:svelte",
+    "build:icons": "npm run build -w @scarlab-icons/icons",
+    "build:lib": "npm run build -w @scarlab-icons/lib",
+    "build:figma": "npm run build -w @scarlab-icons/figma",
+    "build:vue": "npm run build -w @scarlab-icons/vue",
+    "build:react": "npm run build -w @scarlab-icons/react",
+    "build:svelte": "npm run build -w @scarlab-icons/svelte",
+    "build:transformer": "npm run build -w @scarlab-icons/transformer",
+    "build:all": "npm run build:icons && npm run build:vue && npm run build:react && npm run build:svelte",
 
     "publish:lib": "npm publish ./packages/lib",
     "publish:vue": "npm publish ./packages/vue",
@@ -24,11 +23,7 @@
   },
   "author": "Alex Moore",
   "license": "ISC",
-  "devDependencies": {
-    "lerna": "^4.0.0"
-  },
   "workspaces": [
-    "src",
     "packages/*"
   ]
 }

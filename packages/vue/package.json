@@ -1,9 +1,9 @@
 {
 	"name": "@scarlab-icons/vue",
-	"version": "1.0.5",
+	"version": "2.0.0",
 	"description": "",
-	"main": "dist/index.js",
-	"types": "dist/index.d.ts",
+	"main": "index.js",
+	"types": "index.ts",
 	"author": "Alex Moore",
 	"license": "ISC",
 	"publishConfig": {
@@ -11,13 +11,12 @@
 		"registry": "https://registry.npmjs.org/"
 	},
 	"scripts": {
-		"build": "rimraf dist && ts-node src/index.ts"
+		"build": "ts-node src/index.ts"
 	},
 	"devDependencies": {
-		"vue": "^3.2.31",
 		"ts-node": "^10.5.0",
-		"rimraf": "^3.0.2",
-		"@scarlab-icons/icons": "workspace:*",
-		"@scarlab-icons/transformer": "workspace:*"
+		"rimraf": "^5.0.0",
+		"@scarlab-icons/icons": "*",
+		"@scarlab-icons/transformer": "*"
 	}
 }
