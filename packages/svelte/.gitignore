@@ -1,9 +1,0 @@
-node_modules
-.DS_Store
-.idea
-tscompiled
-*.local
-dist
-ghost
-outline
-solid

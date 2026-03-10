@@ -1,28 +1,18 @@
 {
   "name": "scarlab",
-  "version": "2.0.0",
-  "description": "",
+  "version": "3.0.0",
+  "private": true,
+  "author": "Alex Moore",
+  "description": "A set of free MIT-licensed high-quality SVG icons for UI development.",
   "scripts": {
-    "build:test": "npm run build -w @scarlab-icons/test",
-
     "build:icons": "npm run build -w @scarlab-icons/icons",
-    "build:lib": "npm run build -w @scarlab-icons/lib",
-    "build:figma": "npm run build -w @scarlab-icons/figma",
+    "build:js": "npm run build -w @scarlab-icons/js",
     "build:vue": "npm run build -w @scarlab-icons/vue",
     "build:react": "npm run build -w @scarlab-icons/react",
     "build:svelte": "npm run build -w @scarlab-icons/svelte",
-    "build:transformer": "npm run build -w @scarlab-icons/transformer",
-    "build:all": "npm run build:icons && npm run build:vue && npm run build:react && npm run build:svelte",
-
-    "publish:lib": "npm publish ./packages/lib",
-    "publish:vue": "npm publish ./packages/vue",
-    "publish:react": "npm publish ./packages/react",
-    "publish:svelte": "npm publish ./packages/svelte",
-    "publish:icons": "npm publish ./packages/icons",
-    "publish:all": "node scripts/on-publish.js pnpm run publish:lib && npm run publish:vue && npm run publish:react && npm run publish:svelte && npm run publish:icons"
+    "build:angular": "npm run build -w @scarlab-icons/angular",
+    "build:all": "npm run build:icons && npm run build:js && npm run build:vue && npm run build:react && npm run build:svelte && npm run build:angular"
   },
-  "author": "Alex Moore",
-  "license": "ISC",
   "workspaces": [
     "packages/*"
   ]

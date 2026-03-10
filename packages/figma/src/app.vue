@@ -1,35 +1,47 @@
 <template>
   <div class="text-sm">
     <div class="flex border-b border-gray-200">
-      <input ref="input"
-             v-model="query"
-             class="h-10 px-3 appearance-none flex-1 focus:outline-0"
-             placeholder="Search...">
-      <div class="h-10 w-10 flex justify-center items-center cursor-pointer"
-           @click="query = ''">
-        <x-icon stroke-width="1" />
+      <input
+          ref="input"
+          v-model="query"
+          class="h-10 px-3 appearance-none flex-1 focus:outline-0"
+          placeholder="Search..."
+      >
+      <div
+          class="h-10 w-10 flex justify-center items-center cursor-pointer"
+          @click="query = ''"
+      >
+        <BaseX stroke-width="1" />
       </div>
     </div>
 
-    <template v-for="(item, jdx) in list"
-              :key="jdx">
+    <template
+        v-for="(item, _jdx) in list"
+        :key="_jdx"
+    >
       <div class="">
-        <div class="font-medium flex items-center h-10 cursor-pointer leading-10 px-3 border-b border-gray-200"
-             @click="item.isOpen = !item.isOpen">
+        <div
+            class="font-medium flex items-center h-10 cursor-pointer leading-10 px-3 border-b border-gray-200"
+            @click="item.isOpen = !item.isOpen"
+        >
           <div class="flex-1">
             {{ item.label }}
           </div>
-          <div class="ml-3 -mr-3  w-10 flex justify-center items-center">
-            <minus-icon stroke-width="1" v-if="item.isOpen" />
-            <plus-icon stroke-width="1" v-else />
+          <div class="ml-3 -mr-3 w-10 p-2 flex justify-center items-center">
+            <BaseFold v-if="item.isOpen" />
+            <BaseUnfold v-else />
           </div>
         </div>
 
-        <div v-if="item.isOpen"
-             class="flex flex-wrap border-b border-gray-200">
-          <template v-for="(icon, idx) in item.icons"
-                    :key="idx">
-            <div class="w-1/6 h-10 flex justify-center cursor-pointer items-center flex-shrink-0 hover:bg-gray-100"
+        <div
+            v-if="item.isOpen"
+            class="flex flex-wrap border-b border-gray-200"
+        >
+          <template
+              v-for="(icon, _idx) in item.icons"
+              :key="_idx"
+          >
+            <div class="w-1/6 h-10 flex justify-center cursor-pointer items-center shrink-0 hover:bg-gray-100"
                  @click="() => postMessage('CREATE_SVG_FRAME', { svg: toSvg(icon, { width: '24', height: '24' }), name: icon.name })">
               <div v-html="toSvg(icon, { width: '24', height: '24' })" />
             </div>
@@ -51,63 +63,49 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, reactive, ref, computed, watch, onMounted } from 'vue'
-import { XIcon, PlusIcon, MinusIcon } from '@scarlab-icons/vue/outline'
+<script setup lang="ts">
+import { reactive, ref, computed, watch, onMounted } from 'vue'
+import { BaseX, BaseFold, BaseUnfold } from '@scarlab-icons/vue/base'
+import { icons } from '@scarlab-icons/icons'
 import { toSvg } from './utils'
-import icons from '@scarlab-icons/icons'
-import pck from '@scarlab-icons/icons/package.json'
 
-export default defineComponent({
-  name: 'App',
-  components: {
-    XIcon,
-    PlusIcon,
-    MinusIcon
+const version = ref('3.0.0')
+const query = ref('')
+const input = ref<HTMLElement>()
+const list = reactive([
+  {
+    label: 'Base',
+    isOpen: false,
+    icons: computed(() => icons.filter((icon) => icon.style === 'base' && icon.name.includes(query.value)))
   },
-  setup() {
-    const query = ref('')
-    const input = ref<HTMLElement>(undefined)
-    const list = reactive([
-      {
-        label: 'Outline',
-        isOpen: false,
-        icons: computed(() => icons.filter((icon) => icon.directory === 'outline' && icon.name.includes(query.value)))
-      },
-      {
-        label: 'Solid',
-        isOpen: false,
-        icons: computed(() => icons.filter((icon) => icon.directory === 'solid' && icon.name.includes(query.value)))
-      },
-      {
-        label: 'Ghost',
-        isOpen: false,
-        icons: computed(() => icons.filter((icon) => icon.directory === 'ghost' && icon.name.includes(query.value)))
-      }
-    ])
+  {
+    label: 'Outline',
+    isOpen: false,
+    icons: computed(() => icons.filter((icon) => icon.style === 'outline' && icon.name.includes(query.value)))
+  },
+  {
+    label: 'Solid',
+    isOpen: false,
+    icons: computed(() => icons.filter((icon) => icon.style === 'solid' && icon.name.includes(query.value)))
+  },
+  {
+    label: 'Ghost',
+    isOpen: false,
+    icons: computed(() => icons.filter((icon) => icon.style === 'ghost' && icon.name.includes(query.value)))
+  }
+])
 
-    watch(query, (v) => {
-      list.forEach((item) => item.isOpen = Boolean(v))
-    })
+watch(query, (v) => {
+  list.forEach((item) => item.isOpen = Boolean(v))
+})
 
-    function postMessage(action, data) {
-      window.parent.postMessage({ pluginMessage: JSON.stringify({ action, data }) }, '*')
-    }
+function postMessage(action: string, data: any) {
+  window.parent.postMessage({ pluginMessage: JSON.stringify({ action, data }) }, '*')
+}
 
-    onMounted(() => {
-      if (input.value) {
-        input.value.focus()
-      }
-    })
-
-    return {
-      list,
-      query,
-      input,
-      toSvg,
-      postMessage,
-      version: pck.version
-    }
+onMounted(() => {
+  if (input.value) {
+    input.value.focus()
   }
 })
 </script>

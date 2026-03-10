@@ -1,86 +1,66 @@
-import icons from '@scarlab-icons/icons'
-import {TransformToReact, stringifySvg, pascalize, clearDist} from '@scarlab-icons/transformer'
-import fs from 'fs'
-import path from 'path'
+import React, { type ComponentType, type SVGProps } from 'react'
+import { icons } from './imports'
 
-const type = (name: string) => `import * as React from 'react';
-declare function ${name}(props: React.ComponentProps<'svg'>): JSX.Element;
-`
+type IconName = keyof typeof icons
 
-function generateIndexFile(file: string) {
-    fs.writeFileSync(
-        path.resolve(__dirname, `../${file}/index.js`),
-        icons
-            .filter((icon: any) => icon.directory === file)
-            .map((icon: any) => {
-                const name = pascalize(icon.name + '-icon')
+type IconComponent = ComponentType<SVGProps<SVGSVGElement>>
 
-                return `export { default as ${name} } from './${icon.name}.jsx';`
-            })
-            .join('\n')
-    )
-
-    fs.writeFileSync(
-        path.resolve(__dirname, `../${file}/index.ts`),
-        icons
-            .filter((icon: any) => icon.directory === file)
-            .map((icon: any) => {
-                const name = pascalize(icon.name + '-icon')
-
-                return `export { default as ${name} } from './${icon.name}.tsx';`
-            })
-            .join('\n')
-    )
+type ScarlabIconProps = SVGProps<SVGSVGElement> & {
+    name: IconName
 }
 
-async function main() {
-    const mainOutput = path.resolve(__dirname)
+const cache = new Map<IconName, IconComponent>()
 
-    await clearDist(path.resolve(__dirname, '../outline'))
-    await clearDist(path.resolve(__dirname, '../solid'))
-    await clearDist(path.resolve(__dirname, '../ghost'))
+export default function ScarlabIcon({ name, ...props }: ScarlabIconProps) {
+    const [Component, setComponent] = React.useState<IconComponent | null>(() => cache.get(name) ?? null)
 
-    for (let icon of icons) {
-        const output = path.resolve(__dirname, '../', icon.directory)
-        const name = [icon.directory, icon.name].join('-')
-        const svg = stringifySvg(icon.svg, {
-            transformAttr: (key, value, escape) => value ? `${key}="${escape(value)}"`: key
-        })
+    React.useEffect(() => {
+        let cancelled = false
 
-        fs.writeFileSync(`${output}/${icon.name}.jsx`, await TransformToReact(svg))
-        fs.writeFileSync(`${output}/${icon.name}.tsx`, type(pascalize(name)))
+        const cached = cache.get(name)
+        if (cached) {
+            setComponent(() => cached)
+            return
+        }
+
+        setComponent(null)
+
+        const loader = icons[name]
+        if (!loader) {
+            warn(name)
+            return
+        }
+
+        loader()
+            .then((mod) => {
+                const comp = (mod as any).default ?? mod
+                if (typeof comp !== 'function') {
+                    throw new Error('Invalid icon module')
+                }
+
+                cache.set(name, comp)
+                if (!cancelled) setComponent(() => comp)
+            })
+            .catch(() => {
+                warn(name)
+            })
+
+        return () => {
+            cancelled = true
+        }
+    }, [name])
+
+    return Component ? React.createElement(Component, props) : React.createElement('svg', {
+        width: 24,
+        height: 24,
+        viewBox: '0 0 24 24',
+        fill: 'none',
+        ...props,
+    })
+}
+
+function warn(name: string) {
+    if (process.env.NODE_ENV !== 'production') {
+        console.warn(`[ScarlabIcon] Иконка не найдена: "${name}"`)
     }
-
-    generateIndexFile('ghost')
-    generateIndexFile('outline')
-    generateIndexFile('solid')
-
-    fs.writeFileSync(
-        path.resolve(__dirname, '../index.js'),
-        icons
-            .map((icon: any) => {
-                const path = [icon.directory, icon.name].join('-')
-                const name = pascalize(path)
-
-                return `export { default as ${name} } from './${icon.directory}/${icon.name}.jsx';`
-            })
-            .join('\n')
-    )
-
-    fs.writeFileSync(
-        path.resolve(__dirname, '../index.ts'),
-        icons
-            .map((icon: any) => {
-                const path = [icon.directory, icon.name].join('-')
-                const name = pascalize(path)
-
-                return `export { default as ${name} } from './${icon.directory}/${icon.name}.tsx';`
-            })
-            .join('\n')
-    )
-
-    console.log(`Transformed ${icons.length} icons`)
-    console.log(`Output: ${mainOutput}`)
 }
-
-main()

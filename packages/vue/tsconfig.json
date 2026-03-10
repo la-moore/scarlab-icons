@@ -1,15 +1,18 @@
 {
   "compilerOptions": {
-    "target": "es6",
-    "module": "NodeNext",
-    "outDir": "./",
-    "rootDir": "./",
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
     "strict": true,
-    "moduleResolution": "node",
+    "declaration": true,
+    "emitDeclarationOnly": false,
+    "declarationMap": false,
+    "outDir": "dist",
+    "rootDir": "src",
+    "sourceMap": true,
     "esModuleInterop": true,
+    "skipLibCheck": true,
+    "types": ["node"]
   },
-  "exclude":[
-    "./node_modules",
-    "dist"
-  ]
+  "include": ["src/**/*.ts"]
 }

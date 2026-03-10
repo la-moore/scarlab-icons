@@ -1,34 +1,7 @@
 {
-  "compilerOptions": {
-    "target": "es2020",
-    "module": "esnext",
-    "moduleResolution": "node",
-    "removeComments": true,
-    "allowSyntheticDefaultImports": true,
-    "experimentalDecorators": true,
-    "esModuleInterop": true,
-    "resolveJsonModule": true,
-    "noImplicitAny": false,
-    "strict": true,
-    "strictNullChecks": false,
-    "outDir": "./tscompiled/",
-    "lib": ["esnext", "dom"],
-    "types": [
-      "@figma/plugin-typings",
-      "vite/client",
-      "node"
-    ],
-    "files": [
-      "./types/**/*.d.ts"
-    ]
-  },
-  "include": [
-    "./src/**/*.ts",
-    "./src/**/*.tsx",
-    "./src/**/*.vue",
-  ],
-  "exclude": [
-    "node_modules",
-    "dist"
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
   ]
 }

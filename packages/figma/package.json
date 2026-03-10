@@ -1,28 +1,26 @@
 {
   "name": "@scarlab-icons/figma",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "author": "Alex Moore",
-  "license": "ISC",
+  "version": "2.0.0",
+  "description": "A set of free MIT-licensed high-quality SVG icons for UI development.",
+  "author": "moorlex",
+  "license": "MIT",
   "scripts": {
     "build": "vite build",
     "dev": "vite"
   },
+  "dependencies": {
+    "@scarlab-icons/icons": "^3.0.0",
+    "@scarlab-icons/vue": "^3.0.0",
+    "vue": "^3.5.25"
+  },
   "devDependencies": {
-    "@scarlab-icons/icons": "*",
-    "@scarlab-icons/vue": "*",
-    "@scarlab-icons/vite-plugin-figma": "*",
-    "@figma/plugin-typings": "^1.42.1",
-    "@vitejs/plugin-vue": "^2.1.0",
-    "@vue/compiler-sfc": "^3.2.29",
-    "autoprefixer": "^10.4.2",
-    "postcss": "^8.4.5",
-    "tailwindcss": "^3.0.16",
-    "typescript": "^4.5.5",
-    "vite": "^2.7.13",
-    "vite-plugin-copy": "^0.1.6",
-    "vite-plugin-singlefile": "^0.6.3",
-    "vue": "^3.2.29"
+    "@figma/plugin-typings": "^1.123.0",
+    "@types/node": "^24.10.1",
+    "@vitejs/plugin-vue": "^6.0.2",
+    "@vue/tsconfig": "^0.8.1",
+    "@tailwindcss/vite": "^4.1.13",
+    "typescript": "~5.9.3",
+    "vite": "^7.3.1",
+    "vue-tsc": "^3.1.5"
   }
 }

@@ -11,7 +11,7 @@ figma.ui.on('message', (data) => {
     }
 })
 
-function createFrame({ svg, name }) {
+function createFrame({ svg, name }: any) {
     const frame = figma.createNodeFromSvg(svg)
     const bounds = figma.viewport.bounds
     const selection = figma.currentPage.selection[0]
@@ -43,7 +43,3 @@ function createFrame({ svg, name }) {
     figma.currentPage.selection = [frame]
     figma.viewport.scrollAndZoomIntoView([frame])
 }
-
-// figma.ui.on('RESIZE_WINDOW', ({ width, height }) => {
-//     resize(width, height)
-// })

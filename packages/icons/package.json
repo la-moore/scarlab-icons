@@ -1,24 +1,52 @@
 {
-	"name": "@scarlab-icons/icons",
-	"version": "2.0.0",
-	"description": "",
-	"main": "dist/index.js",
-	"module": "dist/index.mjs",
-	"types": "dist/index.d.ts",
-	"author": "Alex Moore",
-	"license": "ISC",
-	"publishConfig": {
-		"access": "public",
-		"registry": "https://registry.npmjs.org/"
-	},
-	"scripts": {
-		"build": "rimraf dist && ts-node src/index.ts"
-	},
-	"devDependencies": {
-		"@types/node": "^17.0.13",
-		"@scarlab-icons/transformer": "*",
-		"ts-node": "^10.4.0",
-		"typescript": "^4.5.5",
-		"rimraf": "^5.0.0"
-	}
+    "name": "@scarlab-icons/icons",
+    "version": "3.0.0",
+    "description": "A set of free MIT-licensed high-quality SVG icons for UI development.",
+    "repository": "https://github.com/la-moore/scarlab-icons",
+    "homepage": "https://scarlab-icons.la-moore.ru",
+    "author": "moorlex",
+    "license": "MIT",
+    "keywords": ["icons", "svg"],
+    "main": "./index.cjs",
+    "module": "./index.js",
+    "types": "./index.d.ts",
+    "type": "module",
+    "files": [
+        "base/",
+        "ghost/",
+        "outline/",
+        "solid/",
+        "index.ts",
+        "index.cjs",
+        "index.js",
+        "LICENSE",
+        "README.md"
+    ],
+    "exports": {
+        ".": {
+            "types": "./index.ts",
+            "import": "./index.js",
+            "require": "./index.cjs"
+        }
+    },
+    "scripts": {
+        "prebuild": "rimraf ./{base,ghost,outline,solid}",
+        "build": "npm run build-base && npm run build-solid && npm run build-ghost && npm run build-outline && npm run build-js",
+        "build-base": "tsx ./scripts/build-icons.ts base -o ./base --pretty --indent=2",
+        "build-ghost": "tsx ./scripts/build-icons.ts ghost -o ./ghost --pretty --indent=2",
+        "build-outline": "tsx ./scripts/build-icons.ts outline -o ./outline --pretty --indent=2",
+        "build-solid": "tsx ./scripts/build-icons.ts solid -o ./solid --pretty --indent=2",
+        "build-js": "tsx ./scripts/build-js.ts"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.27.3",
+        "@babel/plugin-transform-react-jsx": "^7.27.1",
+        "@types/node": "^22.19.1",
+        "prettier": "^2.8.7",
+        "rimraf": "^3.0.2",
+        "svgo": "^4.0.0",
+        "svgson": "^5.3.1",
+        "tsx": "^4.21.0",
+        "typescript": "^5.9.3"
+    }
 }

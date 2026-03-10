@@ -1,20 +1,48 @@
 {
-	"name": "@scarlab-icons/svelte",
-	"version": "2.0.0",
-	"description": "",
-	"author": "Alex Moore",
-	"license": "ISC",
-	"publishConfig": {
-		"access": "public",
-		"registry": "https://registry.npmjs.org/"
-	},
-	"scripts": {
-		"build": "ts-node src/index.ts"
-	},
-	"devDependencies": {
-		"ts-node": "^10.5.0",
-		"rimraf": "^5.0.0",
-		"@scarlab-icons/icons": "*",
-		"@scarlab-icons/transformer": "*"
-	}
+    "name": "@scarlab-icons/svelte",
+    "version": "3.0.0",
+    "description": "A set of free MIT-licensed Svelte components with SVG icons.",
+    "repository": "https://github.com/la-moore/scarlab-icons",
+    "homepage": "https://scarlab-icons.la-moore.ru",
+    "author": "moorlex",
+    "license": "MIT",
+    "keywords": ["icons", "svg", "svelte"],
+    "files": [
+        "dist/",
+        "LICENSE",
+        "README.md"
+    ],
+    "exports": {
+        "./base/*": {
+            "svelte": "./dist/base/*.svelte",
+            "default": "./dist/base/*.svelte"
+        },
+        "./ghost/*": {
+            "svelte": "./dist/ghost/*.svelte",
+            "default": "./dist/ghost/*.svelte"
+        },
+        "./outline/*": {
+            "svelte": "./dist/outline/*.svelte",
+            "default": "./dist/outline/*.svelte"
+        },
+        "./solid/*": {
+            "svelte": "./dist/solid/*.svelte",
+            "default": "./dist/solid/*.svelte"
+        }
+    },
+    "scripts": {
+        "prebuild": "rimraf ./dist",
+        "build": "tsx ./scripts/build.ts"
+    },
+    "devDependencies": {
+        "@scarlab-icons/icons": "*",
+        "@types/node": "^22.19.1",
+        "rimraf": "^3.0.2",
+        "svgson": "^5.3.1",
+        "tsx": "^4.21.0",
+        "typescript": "^5.9.3"
+    },
+    "peerDependencies": {
+        "svelte": ">= 3"
+    }
 }
