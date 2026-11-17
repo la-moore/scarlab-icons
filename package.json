@@ -11,7 +11,8 @@
     "build:react": "npm run build -w @scarlab-icons/react",
     "build:svelte": "npm run build -w @scarlab-icons/svelte",
     "build:angular": "npm run build -w @scarlab-icons/angular",
-    "build:all": "npm run build:icons && npm run build:js && npm run build:vue && npm run build:react && npm run build:svelte && npm run build:angular",
+    "build:unplugin": "npm run build -w @scarlab-icons/unplugin",
+    "build:all": "npm run build:icons && npm run build:js && npm run build:vue && npm run build:react && npm run build:svelte && npm run build:angular && npm run build:unplugin",
     "test": "node --test tests/*.test.mjs",
     "test:update": "UPDATE_SNAPSHOTS=1 node --test tests/*.test.mjs",
     "test:types": "tsc -p tests/types/tsconfig.nodenext.json && tsc -p tests/types/tsconfig.bundler.json"

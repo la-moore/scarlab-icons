@@ -16,7 +16,7 @@ const pascal = (s) => s.replace(/(^|-)([a-z0-9])/g, (_, __, c) => c.toUpperCase(
 /** Все конечные пути из (возможно вложенных) условий exports */
 const flattenTargets = (c) => (typeof c === 'string' ? [c] : Object.values(c).flatMap(flattenTargets))
 
-for (const name of ['icons', 'js', 'react', 'vue', 'svelte', 'angular']) {
+for (const name of ['icons', 'js', 'react', 'vue', 'svelte', 'angular', 'unplugin']) {
     test(`${name}: все пути из exports существуют`, () => {
         const manifest = JSON.parse(read(pkg(name, 'package.json')))
         const missing = []

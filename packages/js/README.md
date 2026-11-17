@@ -36,6 +36,8 @@ replace({
 })
 ```
 
+> `replace()` includes every icon (~2.5 MB). Add [`@scarlab-icons/unplugin`](https://github.com/la-moore/scarlab-icons/tree/master/packages/unplugin) to your Vite or Rollup config and only the icons you use end up in the bundle, with no code changes.
+
 ### Data Attributes
 
 - `data-scarlab` - Icon name (required)
