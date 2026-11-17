@@ -1,6 +1,6 @@
 {
     "name": "@scarlab-icons/react",
-    "version": "4.0.0",
+    "version": "3.1.0",
     "description": "A set of free MIT-licensed React components with SVG icons.",
     "repository": "https://github.com/la-moore/scarlab-icons",
     "homepage": "https://scarlab-icons.la-moore.ru",
@@ -105,7 +105,7 @@
         "build": "tsx ./scripts/build.ts"
     },
     "devDependencies": {
-        "@scarlab-icons/icons": "^4.0.0",
+        "@scarlab-icons/icons": "^3.1.0",
         "@types/node": "^22.19.1",
         "@types/react": "^19.0.0",
         "tsx": "^4.23.15",
