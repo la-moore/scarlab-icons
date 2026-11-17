@@ -1,6 +1,6 @@
 {
     "name": "@scarlab-icons/angular",
-    "version": "3.0.1",
+    "version": "4.0.0",
     "description": "A set of free MIT-licensed Angular components with SVG icons.",
     "repository": "https://github.com/la-moore/scarlab-icons",
     "homepage": "https://scarlab-icons.la-moore.ru",
@@ -53,21 +53,18 @@
         }
     },
     "scripts": {
-        "prebuild": "rimraf ./dist ./.build",
+        "prebuild": "node ../../scripts/clean.mjs dist .build",
         "build": "tsx ./scripts/build.ts && ngc -p .build/tsconfig.json"
     },
     "devDependencies": {
-        "@angular/common": "^21.2.1",
-        "@angular/compiler": "^21.2.1",
-        "@angular/compiler-cli": "^21.2.1",
-        "@angular/core": "^21.2.1",
-        "@scarlab-icons/icons": "*",
+        "@angular/common": "^21.2.26",
+        "@angular/compiler": "^21.2.26",
+        "@angular/compiler-cli": "^21.2.26",
+        "@angular/core": "^21.2.26",
+        "@scarlab-icons/icons": "^4.0.0",
         "@types/node": "^22.19.1",
-        "prettier": "^2.8.7",
-        "rimraf": "^3.0.2",
         "rxjs": "^7.8.2",
-        "svgson": "^5.3.1",
-        "tsx": "^4.21.0",
+        "tsx": "^4.23.15",
         "typescript": "^5.9.3"
     },
     "peerDependencies": {

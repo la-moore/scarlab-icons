@@ -1,21 +1,4 @@
-import { mkdir, writeFile } from 'node:fs/promises'
-import { dirname } from 'node:path'
-import { parse, type INode } from 'svgson'
-import { icons } from '@scarlab-icons/icons'
-
-async function write(file: string, text: string) {
-    await mkdir(dirname(file), { recursive: true })
-    await writeFile(file, text, 'utf8')
-}
-
-function camelize(str: string) {
-    return str.replace(/-([a-z0-9])/g, (g) => g[1].toUpperCase())
-}
-
-function pascalize(str: string) {
-    const camel = camelize(str)
-    return camel[0].toUpperCase() + camel.slice(1)
-}
+import { write, camelize, iconsByStyle, esmIndex, cjsIndex, cjsIndexTypes, type SvgNode } from '../../../scripts/shared.mts'
 
 function toJsString(value: unknown): string {
     return JSON.stringify(value)
@@ -47,13 +30,15 @@ function buildPropsObject(attributes: Record<string, string>, mergeProps: boolea
     }
 
     if (mergeProps) {
-        pairs.push(`...props`)
+        // декоративная иконка скрыта от скринридеров, пока ей не дали доступное имя
+        pairs.push(`"aria-hidden": props["aria-label"] || props["aria-labelledby"] ? undefined : "true"`)
+        pairs.push(`...props`, `ref`)
     }
 
     return `{ ${pairs.join(', ')} }`
 }
 
-function buildNode(node: INode, isRootSvg: boolean): string {
+function buildNode(node: SvgNode, isRootSvg: boolean): string {
     const tag = node.name
 
     const attr = buildPropsObject(node.attributes ?? {}, isRootSvg)
@@ -64,12 +49,7 @@ function buildNode(node: INode, isRootSvg: boolean): string {
 
     const children = node.children
         .map((c) => {
-            if (typeof (c as any) === 'string') {
-                const text = String(c).trim()
-                return text ? toJsString(text) : ''
-            }
-
-            const child = c as unknown as INode
+            const child = c
             if (child.type === 'text') {
                 const text = (child.value ?? '').trim()
                 return text ? toJsString(text) : ''
@@ -86,77 +66,63 @@ function buildNode(node: INode, isRootSvg: boolean): string {
     return `jsxs(${toJsString(tag)}, { ...${attr}, children: [${children.join(', ')}] })`
 }
 
-function buildEsmComponent(componentName: string, svgNode: INode): string {
+function buildEsmComponent(componentName: string, svgNode: SvgNode): string {
     const body = buildNode(svgNode, true)
 
     return [
+        `import { forwardRef } from "react"`,
         `import { jsx, jsxs } from "react/jsx-runtime"`,
-        `export default function ${componentName}(props) {`,
+        `const ${componentName} = forwardRef(function ${componentName}(props, ref) {`,
         `    return ${body}`,
-        `}`,
-        ``
-    ].join('\n')
-}
-
-function buildCjsComponent(componentName: string, svgNode: INode): string {
-    const body = buildNode(svgNode, true)
-
-    return [
-        `const { jsx, jsxs } = require("react/jsx-runtime")`,
-        `module.exports = function ${componentName}(props) {`,
-        `    return ${body}`,
-        `}`,
-        ``
-    ].join('\n')
-}
-
-function buildTypes(componentName: string): string {
-    return [
-        `import type { ComponentType, SVGProps } from 'react'`,
-        `declare const ${componentName}: ComponentType<SVGProps<SVGSVGElement>>`,
+        `})`,
+        `${componentName}.displayName = ${toJsString(componentName)}`,
         `export default ${componentName}`,
         ``
     ].join('\n')
 }
 
+function buildCjsComponent(componentName: string, svgNode: SvgNode): string {
+    const body = buildNode(svgNode, true)
+
+    return [
+        `const { forwardRef } = require("react")`,
+        `const { jsx, jsxs } = require("react/jsx-runtime")`,
+        `const ${componentName} = forwardRef(function ${componentName}(props, ref) {`,
+        `    return ${body}`,
+        `})`,
+        `${componentName}.displayName = ${toJsString(componentName)}`,
+        `module.exports = ${componentName}`,
+        ``
+    ].join('\n')
+}
+
+const TYPE_IMPORT = `import type { ForwardRefExoticComponent, RefAttributes, SVGProps } from 'react'`
+const TYPE_DECL = (component: string) =>
+    `declare const ${component}: ForwardRefExoticComponent<Omit<SVGProps<SVGSVGElement>, 'ref'> & RefAttributes<SVGSVGElement>>`
+
+/** Типы для ESM (`.d.ts`) */
+function buildEsmTypes(component: string): string {
+    return [TYPE_IMPORT, TYPE_DECL(component), `export default ${component}`, ``].join('\n')
+}
+
+/** Типы для CJS (`.d.cts`): module.exports = компонент */
+function buildCjsTypes(component: string): string {
+    return [TYPE_IMPORT, TYPE_DECL(component), `export = ${component}`, ``].join('\n')
+}
+
 async function build() {
-    const styles: Record<string, { component: string, name: string }[]> = {}
-
-    await Promise.all(
-        icons.map(async (icon) => {
-            const path = [icon.style, icon.name].join('-')
-            const component = pascalize(path)
-
-            if (!styles[icon.style]) styles[icon.style] = []
-            styles[icon.style].push({ component, name: icon.name })
-
-            const svgNode = await parse(icon.content)
-
-            return Promise.all([
-                write(`dist/${icon.style}/${icon.name}.ts`, buildTypes(component)),
-                write(`dist/${icon.style}/${icon.name}.js`, buildEsmComponent(component, svgNode)),
-                write(`dist/${icon.style}/${icon.name}.cjs`, buildCjsComponent(component, svgNode))
-            ])
-        })
-    )
-
-    await Promise.all(Object.entries(styles).map(([style, list]) => {
-        list.sort((a, b) => a.name.localeCompare(b.name))
-
-        return Promise.all([
-            write(`dist/${style}/index.ts`, list.map((icon) => {
-                return `export { default as ${icon.component} } from './${icon.name}'`
-            }).join('\n') + '\n'),
-            write(`dist/${style}/index.js`, list.map((icon) => {
-                return `export { default as ${icon.component} } from './${icon.name}.js'`
-            }).join('\n') + '\n'),
-            write(`dist/${style}/index.cjs`, [
-                ...list.map((icon) => `const ${icon.component} = require('./${icon.name}.cjs')`),
-                `module.exports = { ${list.map((icon) => icon.component).join(', ')} }`,
-                ``
-            ].join('\n'))
-        ])
-    }))
+    await Promise.all(iconsByStyle().map(([style, list]) => Promise.all([
+        ...list.flatMap(({ icon, component, name }) => [
+            write(`dist/${style}/${name}.d.ts`, buildEsmTypes(component)),
+            write(`dist/${style}/${name}.d.cts`, buildCjsTypes(component)),
+            write(`dist/${style}/${name}.js`, buildEsmComponent(component, icon.svg)),
+            write(`dist/${style}/${name}.cjs`, buildCjsComponent(component, icon.svg))
+        ]),
+        write(`dist/${style}/index.d.ts`, esmIndex(list)),
+        write(`dist/${style}/index.js`, esmIndex(list)),
+        write(`dist/${style}/index.d.cts`, cjsIndexTypes(list)),
+        write(`dist/${style}/index.cjs`, cjsIndex(list))
+    ])))
 }
 
 build()

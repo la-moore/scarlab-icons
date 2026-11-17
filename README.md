@@ -9,7 +9,7 @@
 </p>
 
 # [Scarlab Icons](http://scarlab-icons.la-moore.ru/)
-Scarlab Icons is a collection of more than 2800 simply, beautiful and open source icons. Each icon is designed on a 24x24 grid with an emphasis on simplicity, consistency, and flexibility.
+Scarlab Icons is a collection of more than 1400 simple, beautiful and open source icons. Each icon is designed on a 24x24 grid with an emphasis on simplicity, consistency, and flexibility.
 
 ```shell
 npm install @scarlab-icons/js
@@ -21,7 +21,7 @@ npm install @scarlab-icons/js
 * [Svelte](https://github.com/la-moore/scarlab-icons/tree/master/packages/svelte)
 * [Angular](https://github.com/la-moore/scarlab-icons/tree/master/packages/angular)
 * [Icons](https://github.com/la-moore/scarlab-icons/tree/master/packages/icons)
-* [Lib](https://github.com/la-moore/scarlab-icons/tree/master/packages/lib)
+* [JS](https://github.com/la-moore/scarlab-icons/tree/master/packages/js)
 
 ## Figma
 Scarlab Icons is available as a [Figma component library](https://www.figma.com/community/file/1051907827478622063/Scarab-Icons). To use the components, log in to your Figma account and duplicate the file to your drafts.

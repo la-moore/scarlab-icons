@@ -1,6 +1,6 @@
 {
     "name": "@scarlab-icons/vue",
-    "version": "3.0.1",
+    "version": "4.0.0",
     "description": "A set of free MIT-licensed Vue components with SVG icons.",
     "repository": "https://github.com/la-moore/scarlab-icons",
     "homepage": "https://scarlab-icons.la-moore.ru",
@@ -11,49 +11,96 @@
         "svg",
         "vue"
     ],
+    "type": "module",
+    "sideEffects": false,
     "exports": {
         "./types": {
-            "types": "./dist/types.ts"
+            "import": {
+                "types": "./dist/types.d.ts"
+            },
+            "require": {
+                "types": "./dist/types.d.cts"
+            }
         },
         "./base": {
-            "types": "./dist/base/index.ts",
-            "import": "./dist/base/index.js",
-            "require": "./dist/base/index.cjs"
+            "import": {
+                "types": "./dist/base/index.d.ts",
+                "default": "./dist/base/index.js"
+            },
+            "require": {
+                "types": "./dist/base/index.d.cts",
+                "default": "./dist/base/index.cjs"
+            }
         },
         "./base/*": {
-            "types": "./dist/base/*.ts",
-            "import": "./dist/base/*.js",
-            "require": "./dist/base/*.cjs"
+            "import": {
+                "types": "./dist/base/*.d.ts",
+                "default": "./dist/base/*.js"
+            },
+            "require": {
+                "types": "./dist/base/*.d.cts",
+                "default": "./dist/base/*.cjs"
+            }
         },
         "./ghost": {
-            "types": "./dist/ghost/index.ts",
-            "import": "./dist/ghost/index.js",
-            "require": "./dist/ghost/index.cjs"
+            "import": {
+                "types": "./dist/ghost/index.d.ts",
+                "default": "./dist/ghost/index.js"
+            },
+            "require": {
+                "types": "./dist/ghost/index.d.cts",
+                "default": "./dist/ghost/index.cjs"
+            }
         },
         "./ghost/*": {
-            "types": "./dist/ghost/*.ts",
-            "import": "./dist/ghost/*.js",
-            "require": "./dist/ghost/*.cjs"
-        },
-        "./solid": {
-            "types": "./dist/solid/index.ts",
-            "import": "./dist/solid/index.js",
-            "require": "./dist/solid/index.cjs"
-        },
-        "./solid/*": {
-            "types": "./dist/solid/*.ts",
-            "import": "./dist/solid/*.js",
-            "require": "./dist/solid/*.cjs"
+            "import": {
+                "types": "./dist/ghost/*.d.ts",
+                "default": "./dist/ghost/*.js"
+            },
+            "require": {
+                "types": "./dist/ghost/*.d.cts",
+                "default": "./dist/ghost/*.cjs"
+            }
         },
         "./outline": {
-            "types": "./dist/outline/index.ts",
-            "import": "./dist/outline/index.js",
-            "require": "./dist/outline/index.cjs"
+            "import": {
+                "types": "./dist/outline/index.d.ts",
+                "default": "./dist/outline/index.js"
+            },
+            "require": {
+                "types": "./dist/outline/index.d.cts",
+                "default": "./dist/outline/index.cjs"
+            }
         },
         "./outline/*": {
-            "types": "./dist/outline/*.ts",
-            "import": "./dist/outline/*.js",
-            "require": "./dist/outline/*.cjs"
+            "import": {
+                "types": "./dist/outline/*.d.ts",
+                "default": "./dist/outline/*.js"
+            },
+            "require": {
+                "types": "./dist/outline/*.d.cts",
+                "default": "./dist/outline/*.cjs"
+            }
+        },
+        "./solid": {
+            "import": {
+                "types": "./dist/solid/index.d.ts",
+                "default": "./dist/solid/index.js"
+            },
+            "require": {
+                "types": "./dist/solid/index.d.cts",
+                "default": "./dist/solid/index.cjs"
+            }
+        },
+        "./solid/*": {
+            "import": {
+                "types": "./dist/solid/*.d.ts",
+                "default": "./dist/solid/*.js"
+            },
+            "require": {
+                "types": "./dist/solid/*.d.cts",
+                "default": "./dist/solid/*.cjs"
+            }
         }
     },
     "files": [
@@ -62,22 +109,13 @@
         "README.md"
     ],
     "scripts": {
-        "prebuild": "rimraf ./dist",
+        "prebuild": "node ../../scripts/clean.mjs dist",
         "build": "tsx ./scripts/build.ts"
     },
     "devDependencies": {
-        "@rollup/plugin-commonjs": "^28.0.3",
-        "@rollup/plugin-node-resolve": "^16.0.0",
-        "@rollup/plugin-typescript": "^12.1.4",
-        "@scarlab-icons/icons": "^3.0.0",
+        "@scarlab-icons/icons": "^4.0.0",
         "@types/node": "^22.19.1",
-        "@vue/compiler-dom": "^3.0.5",
-        "prettier": "^2.8.7",
-        "rimraf": "^3.0.2",
-        "rollup": "^4.40.0",
-        "rollup-plugin-dts": "^6.2.3",
-        "tslib": "^2.8.1",
-        "tsx": "^4.21.0",
+        "tsx": "^4.23.15",
         "typescript": "^5.9.3"
     },
     "peerDependencies": {

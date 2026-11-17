@@ -6,7 +6,7 @@
 </p>
 
 # [Scarlab Icons](http://scarlab-icons.la-moore.ru/)
-Scarlab Icons is a collection of more than 2800 simply, beautiful and open source icons. Each icon is designed on a 24x24 grid with an emphasis on simplicity, consistency, and flexibility.
+Scarlab Icons is a collection of more than 1400 simple, beautiful and open source icons. Each icon is designed on a 24x24 grid with an emphasis on simplicity, consistency, and flexibility.
 
 [scarlab-icons](http://scarlab-icons.la-moore.ru/)
 

@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [22, 24]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run build:all
+
+      - run: npm test
+
+      - run: npm run test:types
+
+      # сборка должна быть детерминированной: повторная генерация не меняет данные
+      - name: Check build determinism
+        run: |
+          sha256sum packages/icons/index.js packages/icons/index.d.ts > /tmp/build.sha
+          npm run build:icons
+          sha256sum -c /tmp/build.sha

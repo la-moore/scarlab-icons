@@ -1,12 +1,15 @@
 {
     "name": "@scarlab-icons/icons",
-    "version": "3.0.0",
+    "version": "4.0.0",
     "description": "A set of free MIT-licensed high-quality SVG icons for UI development.",
     "repository": "https://github.com/la-moore/scarlab-icons",
     "homepage": "https://scarlab-icons.la-moore.ru",
     "author": "moorlex",
     "license": "MIT",
-    "keywords": ["icons", "svg"],
+    "keywords": [
+        "icons",
+        "svg"
+    ],
     "main": "./index.cjs",
     "module": "./index.js",
     "types": "./index.d.ts",
@@ -16,7 +19,7 @@
         "ghost/",
         "outline/",
         "solid/",
-        "index.ts",
+        "index.d.ts",
         "index.cjs",
         "index.js",
         "LICENSE",
@@ -24,29 +27,25 @@
     ],
     "exports": {
         ".": {
-            "types": "./index.ts",
+            "types": "./index.d.ts",
             "import": "./index.js",
             "require": "./index.cjs"
-        }
+        },
+        "./base/*.svg": "./base/*.svg",
+        "./ghost/*.svg": "./ghost/*.svg",
+        "./outline/*.svg": "./outline/*.svg",
+        "./solid/*.svg": "./solid/*.svg",
+        "./package.json": "./package.json"
     },
     "scripts": {
-        "prebuild": "rimraf ./{base,ghost,outline,solid}",
-        "build": "npm run build-base && npm run build-solid && npm run build-ghost && npm run build-outline && npm run build-js",
-        "build-base": "tsx ./scripts/build-icons.ts base -o ./base --pretty --indent=2",
-        "build-ghost": "tsx ./scripts/build-icons.ts ghost -o ./ghost --pretty --indent=2",
-        "build-outline": "tsx ./scripts/build-icons.ts outline -o ./outline --pretty --indent=2",
-        "build-solid": "tsx ./scripts/build-icons.ts solid -o ./solid --pretty --indent=2",
-        "build-js": "tsx ./scripts/build-js.ts"
+        "prebuild": "node ../../scripts/clean.mjs base ghost outline solid",
+        "build": "tsx ./scripts/index.ts"
     },
     "devDependencies": {
-        "@babel/core": "^7.27.3",
-        "@babel/plugin-transform-react-jsx": "^7.27.1",
         "@types/node": "^22.19.1",
-        "prettier": "^2.8.7",
-        "rimraf": "^3.0.2",
         "svgo": "^4.0.0",
         "svgson": "^5.3.1",
-        "tsx": "^4.21.0",
+        "tsx": "^4.23.15",
         "typescript": "^5.9.3"
     }
 }

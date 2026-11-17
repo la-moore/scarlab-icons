@@ -6,7 +6,7 @@
 </p>
 
 # [Scarlab Icons](http://scarlab-icons.la-moore.ru/)
-Scarlab Icons is a collection of more than 2800 simply, beautiful and open source icons. Each icon is designed on a 24x24 grid with an emphasis on simplicity, consistency, and flexibility.
+Scarlab Icons is a collection of more than 1400 simple, beautiful and open source icons. Each icon is designed on a 24x24 grid with an emphasis on simplicity, consistency, and flexibility.
 
 ```shell
 npm install @scarlab-icons/icons
@@ -14,22 +14,38 @@ npm install @scarlab-icons/icons
 
 ### Include
 ```ts
-import { icons, type Icon } from '@scarlab-icons/icons'
+import { icons, type IconNode, type IconStyle, type Icon } from '@scarlab-icons/icons'
 ```
+
+The package also ships optimized SVG files: `@scarlab-icons/icons/{base,ghost,outline,solid}/<name>.svg`.
+
+### Data
+`icons` is an array of `IconNode`:
+
+```ts
+interface IconNode {
+    name: string        // 'heart'
+    style: IconStyle    // 'base' | 'ghost' | 'outline' | 'solid'
+    content: string     // ready-to-use SVG markup
+    svg: SvgNode        // parsed SVG tree: { name, type, value, attributes, children }
+}
+```
+
+Icon names are available as types: `BaseIconName`, `GhostIconName`, `OutlineIconName`, `SolidIconName`, and `Icon` for the full `style/name` form.
 
 ### Use
 ```ts
-const icon = icons.find(({ name }) => name === 'circle')
-const svg = template(icon.paths)
+import { icons, type Icon } from '@scarlab-icons/icons'
 
-function template(paths) {
-    return `<svg class="scarlab-icon">${ paths.map(attrs => `<path d="${attrs.d}" opacity="${attrs.opacity}" fill="${attrs.fill}" stroke="${attrs.stroke}" />`).join('') }</svg>`
+function getIcon(id: Icon) {
+    const [style, name] = id.split('/')
+    return icons.find((icon) => icon.style === style && icon.name === name)
 }
 
-function getIcon(name: Icon) {
-    // ...
-}
+document.body.insertAdjacentHTML('beforeend', getIcon('outline/heart')!.content)
 ```
+
+For rendering in the browser or with custom attributes, see [`@scarlab-icons/js`](https://www.npmjs.com/package/@scarlab-icons/js) and the framework packages (`react`, `vue`, `svelte`, `angular`).
 
 ## Figma
 Scarlab Icons is available as a [Figma component library](https://www.figma.com/community/file/1051907827478622063/Scarab-Icons). To use the components, log in to your Figma account and duplicate the file to your drafts.

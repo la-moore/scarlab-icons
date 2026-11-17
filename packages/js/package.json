@@ -1,12 +1,21 @@
 {
     "name": "@scarlab-icons/js",
-    "version": "3.0.0",
+    "version": "4.0.0",
     "description": "A set of free MIT-licensed SVG icons.",
     "repository": "https://github.com/la-moore/scarlab-icons",
     "homepage": "https://scarlab-icons.la-moore.ru",
     "author": "moorlex",
     "license": "MIT",
-    "keywords": ["icons", "svg", "js"],
+    "keywords": [
+        "icons",
+        "svg",
+        "js"
+    ],
+    "type": "module",
+    "sideEffects": false,
+    "main": "./dist/index.cjs",
+    "module": "./dist/index.js",
+    "types": "./dist/index.d.ts",
     "files": [
         "dist/",
         "LICENSE",
@@ -19,21 +28,22 @@
             "require": "./dist/index.cjs"
         }
     },
+    "dependencies": {
+        "@scarlab-icons/icons": "^4.0.0"
+    },
     "scripts": {
-        "prebuild": "rimraf ./dist",
+        "prebuild": "node ../../scripts/clean.mjs dist",
         "build": "rollup -c"
     },
     "devDependencies": {
-        "@scarlab-icons/icons": "*",
-        "@types/node": "^22.19.1",
-        "rimraf": "^3.0.2",
         "@rollup/plugin-commonjs": "^28.0.3",
         "@rollup/plugin-node-resolve": "^16.0.0",
         "@rollup/plugin-typescript": "^12.1.4",
+        "@types/node": "^22.19.1",
         "rollup": "^4.40.0",
         "rollup-plugin-dts": "^6.2.3",
         "tslib": "^2.8.1",
-        "tsx": "^4.21.0",
+        "tsx": "^4.23.15",
         "typescript": "^5.9.3"
     }
 }

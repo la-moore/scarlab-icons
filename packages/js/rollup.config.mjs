@@ -7,7 +7,9 @@ import dts from 'rollup-plugin-dts'
 
 const external = [
   ...builtinModules,
-  ...builtinModules.map((m) => `node:${m}`)
+  ...builtinModules.map((m) => `node:${m}`),
+  // данные иконок — зависимость, а не часть бандла: npm дедуплицирует их с другими пакетами
+  '@scarlab-icons/icons'
 ]
 
 /** @type {import('rollup').RollupOptions[]} */
@@ -41,7 +43,7 @@ export default [
   {
     input: 'src/index.ts',
     external,
-    plugins: [dts()],
+    plugins: [dts({ respectExternal: true })],
     output: {
       file: 'dist/index.d.ts',
       format: 'esm'

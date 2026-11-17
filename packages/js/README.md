@@ -6,7 +6,7 @@
 </p>
 
 # [Scarlab Icons](http://scarlab-icons.la-moore.ru/)
-Scarlab Icons is a collection of more than 2800 simply, beautiful and open source icons. Each icon is designed on a 24x24 grid with an emphasis on simplicity, consistency, and flexibility.
+Scarlab Icons is a collection of more than 1400 simple, beautiful and open source icons. Each icon is designed on a 24x24 grid with an emphasis on simplicity, consistency, and flexibility.
 
 [scarlab-icons](http://scarlab-icons.la-moore.ru/)
 
@@ -55,6 +55,24 @@ Any other HTML attributes will be passed through to the generated SVG element:
      stroke="#ff6800">
 </div>
 ```
+
+### Accessibility
+Icons are decorative by default and rendered with `aria-hidden="true"`. Add `aria-label` (or `aria-labelledby`) to give an icon an accessible name — `aria-hidden` is then omitted:
+
+```html
+<div data-scarlab="heart" aria-label="Like"></div>
+```
+
+### API
+
+```js
+import { getIcon, toSvg } from '@scarlab-icons/js'
+
+const icon = getIcon('heart', 'outline') // IconNode | undefined, style defaults to 'base'
+const svg = toSvg(icon, { width: 32, strokeWidth: 3, class: 'my-icon' })
+```
+
+`toSvg` converts camelCase names to kebab-case (`strokeWidth` → `stroke-width`), escapes values and skips `null`, `undefined` and `false`.
 
 ## Figma
 Scarlab Icons is available as a [Figma component library](https://www.figma.com/community/file/1051907827478622063/Scarab-Icons). To use the components, log in to your Figma account and duplicate the file to your drafts.

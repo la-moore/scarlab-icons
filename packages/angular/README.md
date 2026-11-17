@@ -6,7 +6,7 @@
 </p>
 
 # [Scarlab Icons](http://scarlab-icons.la-moore.ru/)
-Scarlab Icons is a collection of more than 2800 simply, beautiful and open source icons. Each icon is designed on a 24x24 grid with an emphasis on simplicity, consistency, and flexibility.
+Scarlab Icons is a collection of more than 1400 simple, beautiful and open source icons. Each icon is designed on a 24x24 grid with an emphasis on simplicity, consistency, and flexibility.
 
 ```shell
 npm install @scarlab-icons/angular
@@ -38,6 +38,13 @@ import { OutlineCircle } from '@scarlab-icons/angular/outline'
   `
 })
 export class AppComponent {}
+```
+
+### Accessibility
+Icons are decorative by default and rendered with `aria-hidden="true"`. Pass `ariaLabel` to give an icon an accessible name — `aria-hidden` is then removed:
+
+```html
+<scarlab-icon-outline-heart ariaLabel="Like" />
 ```
 
 ## Figma

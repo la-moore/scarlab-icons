@@ -1,19 +1,54 @@
-import { write, getIcons } from './build'
+import { write, type Icon } from './build.ts'
 
-async function build() {
-    const icons = await getIcons()
+const STYLES = ['base', 'ghost', 'outline', 'solid'] as const
 
-    write('index.ts', [
-        'export type Node = { svg: Record<string, any>, style: string, content: string, name: string }',
-        'export const icons: Node[] = []',
-        `export type Icon = '${icons.map((icon) => icon.style + '/' + icon.name).join("' | '")}'`
-    ].join('\n'))
-    write('index.js', [
-        'export const icons = ' + JSON.stringify(icons, null, '\t')
-    ].join('\n'))
-    write('index.cjs', [
-        `module.exports = { icons: ${JSON.stringify(icons, null, '\t')} }`
-    ].join('\n'))
+function union(values: string[]) {
+    return values.length ? values.map((v) => `'${v}'`).join(' | ') : 'never'
 }
 
-build()
+/** Данные для пакетов-обёрток: index.js, index.cjs и типы */
+export async function buildIndex(icons: Icon[]) {
+    const byStyle = (style: string) => icons.filter((icon) => icon.style === style).map((icon) => icon.name)
+
+    const dts = [
+        `export type IconStyle = ${union([...STYLES])}`,
+        '',
+        ...STYLES.map((style) => {
+            const typeName = style[0].toUpperCase() + style.slice(1) + 'IconName'
+            return `export type ${typeName} = ${union(byStyle(style))}`
+        }),
+        '',
+        '/** Полное имя иконки в формате `style/name` */',
+        `export type Icon = ${union(icons.map((icon) => `${icon.style}/${icon.name}`))}`,
+        '',
+        'export interface SvgNode {',
+        '    name: string',
+        '    type: string',
+        '    value: string',
+        '    attributes: Record<string, string>',
+        '    children: SvgNode[]',
+        '}',
+        '',
+        'export interface IconNode {',
+        '    svg: SvgNode',
+        '    style: IconStyle',
+        '    name: string',
+        '    content: string',
+        '}',
+        '',
+        '/** @deprecated используйте IconNode */',
+        'export type Node = IconNode',
+        '',
+        'export declare const icons: IconNode[]',
+        '',
+    ].join('\n')
+
+    // svgson кладёт в каждый узел ссылку parent: в данных она не нужна (и не описана в типах)
+    const json = JSON.stringify(icons, (key, value) => (key === 'parent' ? undefined : value))
+
+    await Promise.all([
+        write('index.d.ts', dts),
+        write('index.js', `export const icons = ${json}\n`),
+        write('index.cjs', `module.exports = { icons: ${json} }\n`),
+    ])
+}

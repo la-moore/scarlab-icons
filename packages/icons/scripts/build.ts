@@ -3,33 +3,61 @@ import { dirname, basename }  from 'node:path'
 import { parse, stringify, INode }  from 'svgson'
 import { optimize } from 'svgo'
 
-interface Icon {
+export interface Icon {
     svg: INode
     style: string
     content: string
     name: string
 }
 
-export async function getIcons() {
-    const styles = await fs.readdir('./src')
-    const icons: Icon[] = []
+const COLOR = 'currentColor'
+const STROKE_WIDTH = '2'
 
-    const opts = {
-        color: 'currentColor',
-        width: '2',
+/** Цвет и обводка задаются на корневом <svg>, чтобы их можно было переопределить через props */
+function applyStyle(svg: INode, style: string) {
+    if (style === 'solid') {
+        Object.assign(svg.attributes, {
+            fill: COLOR,
+            stroke: 'none',
+            'fill-rule': 'evenodd',
+            'clip-rule': 'evenodd',
+        })
+        return
     }
+
+    Object.assign(svg.attributes, {
+        stroke: COLOR,
+        fill: 'none',
+        'stroke-width': STROKE_WIDTH,
+        'stroke-linecap': 'round',
+        'stroke-linejoin': 'round',
+    })
+
+    // в ghost полупрозрачные фигуры заливаются, остальные остаются контуром
+    if (style === 'ghost') {
+        for (const child of svg.children) {
+            if (child.attributes.opacity) child.attributes.fill = COLOR
+        }
+    }
+}
+
+export async function getIcons() {
+    const styles = (await fs.readdir('./src', { withFileTypes: true }))
+        .filter((entry) => entry.isDirectory())
+        .map((entry) => entry.name)
+    const icons: Icon[] = []
 
     await Promise.all(
         styles.map(async (style) => {
-            let files = await fs.readdir(`./src/${style}`)
+            const files = await fs.readdir(`./src/${style}`)
 
             return Promise.all(
                 files.map(async (file) => {
                     if (file.startsWith('.')) return
 
-                    const raw =  await fs.readFile(`./src/${style}/${file}`, 'utf8')
+                    const raw = await fs.readFile(`./src/${style}/${file}`, 'utf8')
 
-                    const { data: content } =  optimize(raw, {
+                    const { data: content } = optimize(raw, {
                         plugins: [
                             'preset-default',
                             'removeDimensions',
@@ -49,36 +77,7 @@ export async function getIcons() {
                     })
                     const svg = await parse(content)
 
-                    if (style === 'solid') {
-                        svg.attributes.fill = opts.color
-                        svg.attributes.stroke = 'none'
-                        svg.attributes['fill-rule'] = 'evenodd'
-                        svg.attributes['clip-rule'] = 'evenodd'
-                    }
-
-                    if (style === 'outline' || style === 'base') {
-                        svg.attributes.stroke = opts.color
-                        svg.attributes.fill = 'none'
-                        svg.attributes['stroke-width'] = opts.width
-                        svg.attributes['stroke-linecap'] = 'round'
-                        svg.attributes['stroke-linejoin'] = 'round'
-                    }
-
-                    if (style === 'ghost') {
-                        svg.attributes.stroke = opts.color
-                        svg.attributes.fill = 'none'
-                        svg.attributes['stroke-width'] = opts.width
-                        svg.attributes['stroke-linecap'] = 'round'
-                        svg.attributes['stroke-linejoin'] = 'round'
-
-                        for (let child of svg.children) {
-                            if (child.attributes.opacity) {
-                                child.attributes.fill = opts.color
-                            } else {
-                                svg.attributes.stroke = opts.color
-                            }
-                        }
-                    }
+                    applyStyle(svg, style)
 
                     icons.push({
                         svg,
@@ -90,6 +89,9 @@ export async function getIcons() {
             )
         })
     )
+
+    // Promise.all + push даёт случайный порядок — сортируем для детерминированной сборки
+    icons.sort((a, b) => a.style.localeCompare(b.style) || a.name.localeCompare(b.name))
 
     return icons
 }
