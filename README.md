@@ -22,6 +22,7 @@ npm install @scarlab-icons/js
 * [Angular](https://github.com/la-moore/scarlab-icons/tree/master/packages/angular)
 * [Icons](https://github.com/la-moore/scarlab-icons/tree/master/packages/icons)
 * [JS](https://github.com/la-moore/scarlab-icons/tree/master/packages/js)
+* [Build plugin (Vite, Rollup)](https://github.com/la-moore/scarlab-icons/tree/master/packages/unplugin)
 
 ## Figma
 Scarlab Icons is available as a [Figma component library](https://www.figma.com/community/file/1051907827478622063/Scarab-Icons). To use the components, log in to your Figma account and duplicate the file to your drafts.
