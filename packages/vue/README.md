@@ -14,7 +14,7 @@ npm install @scarlab-icons/vue
 
 ### Include
 ```js
-import { SolidSquareIcon, SolidCircleIcon } from '@scarlab-icons/vue/solid'
+import { SolidSquare, SolidCircle } from '@scarlab-icons/vue/solid'
 import CircleIcon from '@scarlab-icons/vue/outline/circle'
 ```
 

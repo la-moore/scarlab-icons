@@ -14,7 +14,7 @@ npm install @scarlab-icons/angular
 
 ### Include
 ```typescript
-import { SolidSquareIcon, SolidCircleIcon } from '@scarlab-icons/angular/solid'
+import { SolidSquare, SolidCircle } from '@scarlab-icons/angular/solid'
 import CircleIcon from '@scarlab-icons/angular/outline/circle'
 ```
 
@@ -22,12 +22,12 @@ import CircleIcon from '@scarlab-icons/angular/outline/circle'
 
 ```typescript
 import { Component } from '@angular/core'
-import { CircleIcon } from '@scarlab-icons/angular/outline'
+import { OutlineCircle } from '@scarlab-icons/angular/outline'
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CircleIcon],
+  imports: [OutlineCircle],
   template: `
     <scarlab-icon-outline-circle
         [width]="'32'"

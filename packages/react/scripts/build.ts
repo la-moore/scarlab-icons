@@ -120,10 +120,15 @@ function buildTypes(componentName: string): string {
 }
 
 async function build() {
+    const styles: Record<string, { component: string, name: string }[]> = {}
+
     await Promise.all(
         icons.map(async (icon) => {
             const path = [icon.style, icon.name].join('-')
             const component = pascalize(path)
+
+            if (!styles[icon.style]) styles[icon.style] = []
+            styles[icon.style].push({ component, name: icon.name })
 
             const svgNode = await parse(icon.content)
 
@@ -134,5 +139,24 @@ async function build() {
             ])
         })
     )
+
+    await Promise.all(Object.entries(styles).map(([style, list]) => {
+        list.sort((a, b) => a.name.localeCompare(b.name))
+
+        return Promise.all([
+            write(`dist/${style}/index.ts`, list.map((icon) => {
+                return `export { default as ${icon.component} } from './${icon.name}'`
+            }).join('\n') + '\n'),
+            write(`dist/${style}/index.js`, list.map((icon) => {
+                return `export { default as ${icon.component} } from './${icon.name}.js'`
+            }).join('\n') + '\n'),
+            write(`dist/${style}/index.cjs`, [
+                ...list.map((icon) => `const ${icon.component} = require('./${icon.name}.cjs')`),
+                `module.exports = { ${list.map((icon) => icon.component).join(', ')} }`,
+                ``
+            ].join('\n'))
+        ])
+    }))
 }
+
 build()

@@ -12,7 +12,7 @@
 Scarlab Icons is a collection of more than 2800 simply, beautiful and open source icons. Each icon is designed on a 24x24 grid with an emphasis on simplicity, consistency, and flexibility.
 
 ```shell
-npm install @scarlab-icons/lib
+npm install @scarlab-icons/js
 ```
 
 ## Available packages

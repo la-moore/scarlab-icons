@@ -16,7 +16,7 @@ npm install @scarlab-icons/react
 
 ### Include
 ```jsx
-import { SolidSquareIcon, SolidCircleIcon } from '@scarlab-icons/react/solid'
+import { SolidSquare, SolidCircle } from '@scarlab-icons/react/solid'
 import CircleIcon from '@scarlab-icons/react/outline/circle'
 ```
 

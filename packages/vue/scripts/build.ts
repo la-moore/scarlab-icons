@@ -45,7 +45,7 @@ function transformCjs(code: string) {
         )
         .replace(
             /createElementBlock: _createElementBlock/,
-            'createElementBlock: _createElementBlock, mergeProp: _mergeProps'
+            'createElementBlock: _createElementBlock, mergeProps: _mergeProps'
         )
         .replace(
             /_createElementBlock\(\s*"svg",\s*({[\s\S]*?})\s*,/m,
@@ -94,7 +94,7 @@ async function build() {
             }).join('\n')),
             write(`dist/${style}/index.cjs`, (() => {
                 const requires = icons.map((icon) => {
-                    return `const ${icon.component} = require("./${icon.name}")`
+                    return `const ${icon.component} = require("./${icon.name}.cjs")`
                 })
 
                 return [

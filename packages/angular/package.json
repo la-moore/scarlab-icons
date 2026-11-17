@@ -1,60 +1,71 @@
 {
     "name": "@scarlab-icons/angular",
-    "version": "3.0.0",
+    "version": "3.0.1",
     "description": "A set of free MIT-licensed Angular components with SVG icons.",
     "repository": "https://github.com/la-moore/scarlab-icons",
     "homepage": "https://scarlab-icons.la-moore.ru",
     "author": "moorlex",
     "license": "MIT",
-    "keywords": ["icons", "svg", "angular"],
+    "keywords": [
+        "icons",
+        "svg",
+        "angular"
+    ],
+    "type": "module",
+    "sideEffects": false,
     "files": [
         "dist/",
         "LICENSE",
         "README.md"
     ],
     "exports": {
-        "./base/*": {
-            "types": "./dist/base/*.ts",
-            "default": "./dist/base/*.ts"
-        },
         "./base": {
-            "types": "./dist/base/index.ts",
-            "default": "./dist/base/index.ts"
+            "types": "./dist/base/index.d.ts",
+            "default": "./dist/base/index.js"
         },
-        "./ghost/*": {
-            "types": "./dist/ghost/*.ts",
-            "default": "./dist/ghost/*.ts"
+        "./base/*": {
+            "types": "./dist/base/*.d.ts",
+            "default": "./dist/base/*.js"
         },
         "./ghost": {
-            "types": "./dist/ghost/index.ts",
-            "default": "./dist/ghost/index.ts"
+            "types": "./dist/ghost/index.d.ts",
+            "default": "./dist/ghost/index.js"
         },
-        "./outline/*": {
-            "types": "./dist/outline/*.ts",
-            "default": "./dist/outline/*.ts"
+        "./ghost/*": {
+            "types": "./dist/ghost/*.d.ts",
+            "default": "./dist/ghost/*.js"
         },
         "./outline": {
-            "types": "./dist/outline/index.ts",
-            "default": "./dist/outline/index.ts"
+            "types": "./dist/outline/index.d.ts",
+            "default": "./dist/outline/index.js"
         },
-        "./solid/*": {
-            "types": "./dist/solid/*.ts",
-            "default": "./dist/solid/*.ts"
+        "./outline/*": {
+            "types": "./dist/outline/*.d.ts",
+            "default": "./dist/outline/*.js"
         },
         "./solid": {
-            "types": "./dist/solid/index.ts",
-            "default": "./dist/solid/index.ts"
+            "types": "./dist/solid/index.d.ts",
+            "default": "./dist/solid/index.js"
+        },
+        "./solid/*": {
+            "types": "./dist/solid/*.d.ts",
+            "default": "./dist/solid/*.js"
         }
     },
     "scripts": {
-        "prebuild": "rimraf ./dist",
-        "build": "tsx ./scripts/build.ts"
+        "prebuild": "rimraf ./dist ./.build",
+        "build": "tsx ./scripts/build.ts && ngc -p .build/tsconfig.json"
     },
     "devDependencies": {
+        "@angular/common": "^21.2.1",
+        "@angular/compiler": "^21.2.1",
+        "@angular/compiler-cli": "^21.2.1",
+        "@angular/core": "^21.2.1",
         "@scarlab-icons/icons": "*",
         "@types/node": "^22.19.1",
         "prettier": "^2.8.7",
         "rimraf": "^3.0.2",
+        "rxjs": "^7.8.2",
         "svgson": "^5.3.1",
         "tsx": "^4.21.0",
         "typescript": "^5.9.3"

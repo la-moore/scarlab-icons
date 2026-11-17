@@ -62,40 +62,35 @@ function renderNode(node: INode): string {
     return `${open}${children}</${node.name}>`
 }
 
-type SvgDefaults = {
-    width?: string
-    height?: string
-    viewBox?: string
-    fill?: string
-    stroke?: string
+const SRC = '.build/src'
+
+function quote(value: string): string {
+    return `'${value.replace(/\\/g, '\\\\').replace(/'/g, "\\'")}'`
+}
+
+function binding(name: string, input: string, value: string | undefined): string {
+    const fallback = value === undefined ? 'null' : escapeAttr(quote(value))
+    return `[attr.${name}]="${input} ?? ${fallback}"`
 }
 
 function buildAngularIconComponent(componentName: string, selector: string, svg: INode): string {
     const attrs = { ...(svg.attributes ?? {}) }
 
-    const defaults: SvgDefaults = {
-        width: attrs.width,
-        height: attrs.height,
-        viewBox: attrs.viewBox,
+    const defaults = {
+        width: attrs.width ?? '24',
+        height: attrs.height ?? '24',
+        viewBox: attrs.viewBox ?? '0 0 24 24',
         fill: attrs.fill,
-        stroke: attrs.stroke
+        stroke: attrs.stroke,
+        strokeWidth: attrs['stroke-width']
     }
 
-    delete attrs.width
-    delete attrs.height
-    delete attrs.viewBox
-    delete attrs.fill
-    delete attrs.stroke
-    delete attrs.class
-    delete attrs.style
+    for (const key of ['xmlns', 'width', 'height', 'viewBox', 'fill', 'stroke', 'stroke-width', 'class', 'style']) {
+        delete attrs[key]
+    }
 
     const staticAttrs = renderAttributes(attrs)
     const staticAttrPart = staticAttrs ? ` ${staticAttrs}` : ''
-
-    const widthDefault = JSON.stringify(defaults.width ?? '24')
-    const heightDefault = JSON.stringify(defaults.height ?? '24')
-    const viewBoxDefault = JSON.stringify(defaults.viewBox ?? '0 0 24 24')
-    const fillDefault = JSON.stringify(defaults.fill ?? 'none')
 
     const children = (svg.children ?? [])
         .map((c) => {
@@ -104,7 +99,18 @@ function buildAngularIconComponent(componentName: string, selector: string, svg:
         })
         .join('')
 
-    const template = `<svg${staticAttrPart} [attr.width]="width ?? ${widthDefault}" [attr.height]="height ?? ${heightDefault}" [attr.viewBox]="viewBox ?? ${viewBoxDefault}" [attr.fill]="fill ?? ${fillDefault}" [attr.stroke]="stroke ?? null" [attr.class]="className ?? null" [attr.style]="style ?? null">${children}</svg>`
+    const bindings = [
+        binding('width', 'width', defaults.width),
+        binding('height', 'height', defaults.height),
+        binding('viewBox', 'viewBox', defaults.viewBox),
+        binding('fill', 'fill', defaults.fill),
+        binding('stroke', 'stroke', defaults.stroke),
+        binding('stroke-width', 'strokeWidth', defaults.strokeWidth),
+        binding('class', 'className', undefined),
+        binding('style', 'style', undefined)
+    ].join(' ')
+
+    const template = `<svg${staticAttrPart} ${bindings}>${children}</svg>`
 
     return [
         `import { Component, Input } from '@angular/core'`,
@@ -115,11 +121,12 @@ function buildAngularIconComponent(componentName: string, selector: string, svg:
         `    template: ${JSON.stringify(template)},`,
         `})`,
         `export default class ${componentName} {`,
-        `    @Input() width: string | null = null`,
-        `    @Input() height: string | null = null`,
+        `    @Input() width: string | number | null = null`,
+        `    @Input() height: string | number | null = null`,
         `    @Input() viewBox: string | null = null`,
         `    @Input() fill: string | null = null`,
         `    @Input() stroke: string | null = null`,
+        `    @Input() strokeWidth: string | number | null = null`,
         `    @Input() className: string | null = null`,
         `    @Input() style: string | null = null`,
         `}`,
@@ -127,18 +134,54 @@ function buildAngularIconComponent(componentName: string, selector: string, svg:
     ].join('\n')
 }
 
+const tsconfig = {
+    compilerOptions: {
+        target: 'ES2022',
+        module: 'ES2022',
+        moduleResolution: 'bundler',
+        lib: ['ES2022', 'DOM'],
+        rootDir: 'src',
+        outDir: '../dist',
+        declaration: true,
+        strict: true,
+        skipLibCheck: true,
+        useDefineForClassFields: false,
+        experimentalDecorators: true
+    },
+    angularCompilerOptions: {
+        compilationMode: 'partial',
+        strictTemplates: true
+    },
+    include: ['src/**/*.ts']
+}
+
 async function build() {
+    const styles: Record<string, { component: string, name: string }[]> = {}
+
     await Promise.all(
         icons.map(async (icon) => {
             const path = [icon.style, icon.name].join('-')
             const component = pascalize(path)
             const selector = `scarlab-icon-${icon.style}-${icon.name}`
 
+            if (!styles[icon.style]) styles[icon.style] = []
+            styles[icon.style].push({ component, name: icon.name })
+
             const svgNode = await parse(icon.content)
 
-            return write(`dist/${icon.style}/${icon.name}.ts`, buildAngularIconComponent(component, selector, svgNode))
+            return write(`${SRC}/${icon.style}/${icon.name}.ts`, buildAngularIconComponent(component, selector, svgNode))
         })
     )
+
+    await Promise.all(Object.entries(styles).map(([style, list]) => {
+        list.sort((a, b) => a.name.localeCompare(b.name))
+
+        return write(`${SRC}/${style}/index.ts`, list.map((icon) => {
+            return `export { default as ${icon.component} } from './${icon.name}.js'`
+        }).join('\n') + '\n')
+    }))
+
+    await write('.build/tsconfig.json', JSON.stringify(tsconfig, null, 4))
 }
 
 build()
